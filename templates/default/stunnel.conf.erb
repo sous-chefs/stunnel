@@ -1,0 +1,60 @@
+; certificate/key is needed in server mode and optional in client mode
+cert = <%= node[:stunnel][:certificate_path] %>
+key = <%= node[:stunnel][:key_path] %>
+
+; protocol version (all, SSLv2, SSLv3, TLSv1)
+; sslVersion = SSLv3 - intenet explorer does not work with only SSLv3
+sslVersion = all
+options = NO_SSLv2
+
+; security enhancements for UNIX systems - comment them out on Win32
+; for chroot a copy of some devices and files is needed within the jail
+<% if node[:stunnel][:use_chroot] %>
+chroot = <%= node[:stunnel][:chroot_path] %>
+<% end %>
+setuid = <%= node[:stunnel][:user] %>
+setgid = <%= node[:stunnel][:group] %>
+; PID is created inside the chroot jail
+pid = <%= node[:stunnel][:pidfile] %>
+
+; performance tunings
+socket = l:TCP_NODELAY=1
+socket = r:TCP_NODELAY=1
+;compression = zlib
+
+; workaround for Eudora bug
+;options = DONT_INSERT_EMPTY_FRAGMENTS
+
+; authentication stuff needs to be configured to prevent MITM attacks
+; it is not enabled by default!
+;verify = 2
+; don't forget to c_rehash CApath
+; CApath is located inside chroot jail
+;CApath = /certs
+; it's often easier to use CAfile
+;CAfile = /usr/bin/etc/stunnel/certs.pem
+; don't forget to c_rehash CRLpath
+; CRLpath is located inside chroot jail
+;CRLpath = /crls
+; alternatively CRLfile can be used
+;CRLfile = /usr/bin/etc/stunnel/crls.pem
+
+; debugging stuff (may useful for troubleshooting)
+;debug = 7
+debug = 3
+output = /var/log/stunnel.log
+
+; SSL client mode
+;client = yes
+
+; service-level configuration
+
+<% if node[:stunnel][:https][:enabled] %>
+[https]
+accept  = <%= node[:stunnel][:https][:accept_port] %>
+connect = <%= node[:stunnel][:https][:connect_port] %>
+TIMEOUTclose = 0
+;xforwardedfor=yes ; This line requires the haproxy patch
+<% end %>
+
+; vim:ft=dosini

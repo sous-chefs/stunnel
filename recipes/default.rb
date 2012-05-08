@@ -1,5 +1,22 @@
 package "stunnel"
 
+# Create directory to hold the pid inside the chroot jail
+if node[:stunnel][:use_chroot]
+  directory "#{node[:stunnel][:chroot_path]}" do
+    owner node[:stunnel][:user]
+    group node[:stunnel][:group]
+    recursive true
+    action :create
+  end
+end
+
+template "/etc/stunnel/stunnel.conf" do
+  source "stunnel.conf.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+end
+
 service "stunnel4" do
   supports :status => true, :restart => true, :reload => true
   action [ :enable, :start ]
@@ -13,7 +30,7 @@ bash "Create SSL Certificates" do
 	#
 	# @param node[:fqdn]: The hostname or fqdn of the server.
 	# @param node[:stunnel][:server_ssl_req]
-	
+
 	cwd "/etc/ssl"
     creates "/etc/ssl/certs/stunnel.pem"
 	code <<-EOH
@@ -24,9 +41,13 @@ bash "Create SSL Certificates" do
 	EOH
 end
 
+
 file "/etc/default/stunnel4" do
-    content """ENABLED=1
+  content <<-EOS
+    ENABLED=1
     FILES='/etc/stunnel/*.conf'
     OPTIONS=''
-    """
+  EOS
 end
+
+
