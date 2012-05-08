@@ -1,0 +1,29 @@
+{
+  "license": "All rights reserved",
+  "suggestions": {
+  },
+  "recipes": {
+  },
+  "dependencies": {
+  },
+  "conflicting": {
+  },
+  "description": "Installs/Configures stunnel",
+  "providing": {
+  },
+  "platforms": {
+  },
+  "version": "0.0.1",
+  "maintainer": "YOUR_COMPANY_NAME",
+  "replacing": {
+  },
+  "maintainer_email": "YOUR_EMAIL",
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+  "name": "stunnel",
+  "groupings": {
+  },
+  "attributes": {
+  },
+  "recommendations": {
+  }
+}
