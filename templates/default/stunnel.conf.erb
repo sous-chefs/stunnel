@@ -1,11 +1,13 @@
 ; certificate/key is needed in server mode and optional in client mode
 cert = <%= node[:stunnel][:certificate_path] %>
+<% if node[:stunnel][:key_path] %>
 key = <%= node[:stunnel][:key_path] %>
+<% end -%>
 
 ; protocol version (all, SSLv2, SSLv3, TLSv1)
 ; sslVersion = SSLv3 - intenet explorer does not work with only SSLv3
-sslVersion = all
-options = NO_SSLv2
+sslVersion = <%= node[:stunnel][:ssl_version] %>
+options = <%= node[:stunnel][:ssl_options] %>
 
 ; security enhancements for UNIX systems - comment them out on Win32
 ; for chroot a copy of some devices and files is needed within the jail
@@ -18,12 +20,19 @@ setgid = <%= node[:stunnel][:group] %>
 pid = <%= node[:stunnel][:pidfile] %>
 
 ; performance tunings
-socket = l:TCP_NODELAY=1
-socket = r:TCP_NODELAY=1
-;compression = zlib
+<% Array(node[:stunnel][:socket_tunings]).each do |s| -%>
+socket = <%= s %>
+<% end -%>
 
-; workaround for Eudora bug
-;options = DONT_INSERT_EMPTY_FRAGMENTS
+<% if node[:stunnel][:compression] -%>
+compression = <%= node[:stunnel][:compression] %>
+<% end -%>
+
+<% if node[:stunnel][:config_options] -%>
+  <% Array(node[:stunnel][:config_options]).each do |opt| -%>
+options = <%= opt %>
+  <% end -%>
+<% end -%>
 
 ; authentication stuff needs to be configured to prevent MITM attacks
 ; it is not enabled by default!
@@ -41,11 +50,17 @@ socket = r:TCP_NODELAY=1
 
 ; debugging stuff (may useful for troubleshooting)
 ;debug = 7
-debug = 3
-output = /var/log/stunnel.log
+<% if node[:stunnel][:debug_level] -%>
+debug = <%= node[:stunnel][:debug_level] %>
+<% end -%>
+<% if node[:stunnel][:output] -%>
+output = <%= node[:stunnel][:output] %>
+<% end -%>
 
 ; SSL client mode
-;client = yes
+<% if node[:stunnel][:client_mode] -%>
+client = yes
+<% end -%>
 
 ; service-level configuration
 
@@ -57,4 +72,11 @@ TIMEOUTclose = 0
 ;xforwardedfor=yes ; This line requires the haproxy patch
 <% end %>
 
-; vim:ft=dosini
+<% node[:stunnel][:services].each do |name, opts| -%>
+[<%= name %>]
+accept = <%= opts[:accept] %>
+connect = <%= opts[:connect] %>
+<% unless opts[:timeout_close].nil? -%>
+TIMEOUTclose = <%= opts[:timeout_close] ? 1 : 0 %>
+<% end -%>
+<% end -%>
