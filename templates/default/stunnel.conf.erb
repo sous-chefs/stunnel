@@ -1,5 +1,7 @@
 ; certificate/key is needed in server mode and optional in client mode
+<% if node[:stunnel][:certificate_path] -%>
 cert = <%= node[:stunnel][:certificate_path] %>
+<% end -%>
 <% if node[:stunnel][:key_path] %>
 key = <%= node[:stunnel][:key_path] %>
 <% end -%>
