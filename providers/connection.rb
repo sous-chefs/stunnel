@@ -19,7 +19,9 @@ action :create do
 end
 
 action :delete do
-  new_resource.updated_by_last_action(
-    node[:stunnel][:services].delete(new_resource.service_name)
-  )
+  serv_data = Mash.new(node[:stunnel][:services])
+  if(serv_data.delete(new_resource.service_name))
+    node.set[:stunnel][:services] = serv_data
+    new_resource.updated_by_last_action(true)
+  end
 end
