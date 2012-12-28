@@ -12,9 +12,18 @@ if(node[:stunnel][:use_chroot])
   end
 end
 
+ruby_block 'stunnel.conf notifier' do
+  block do
+    true
+  end
+  notifies :create, 'template[/etc/stunnel/stunnel.conf]', :delayed
+end
+
 template "/etc/stunnel/stunnel.conf" do
   source "stunnel.conf.erb"
   mode 0644
+  action :nothing
+  notifies :restart, 'service[stunnel]', :delayed
 end
 
 template "/etc/default/stunnel4" do
@@ -26,4 +35,7 @@ service "stunnel" do
   service_name node[:stunnel][:service_name]
   supports :status => true, :restart => true, :reload => true
   action [ :enable, :start ]
+  not_if do
+    node[:stunnel][:services].empty?
+  end
 end

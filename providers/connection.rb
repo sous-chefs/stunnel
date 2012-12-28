@@ -11,9 +11,9 @@ action :create do
     :accept => new_resource.accept,
     :timeout_close => new_resource.timeout_close
   )
-  exist = node[:stunnel][:services][new_resource.name]
-  if(exist.nil? || exist != hsh)
-    node.set[:stunnel][:services][new_resource.name] = hsh
+  exist = Mash.new(node[:stunnel][:services][new_resource.service_name])
+  if(exist != hsh)
+    node.set[:stunnel][:services][new_resource.service_name] = hsh
     new_resource.updated_by_last_action(true)
   end
 end
