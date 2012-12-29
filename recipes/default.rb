@@ -12,6 +12,19 @@ if(node[:stunnel][:use_chroot])
   end
 end
 
+unless(node.platform_family == 'debian')
+  user 'stunnel4' do
+    home '/var/run/stunnel4'
+    system true
+    shell '/bin/false'
+    supports :manage_home => true
+  end
+  cookbook_file '/etc/init.d/stunnel4' do
+    source 'stunnel4'
+    mode 0755
+  end
+end
+
 ruby_block 'stunnel.conf notifier' do
   block do
     true
