@@ -11,7 +11,7 @@ include_recipe 'stunnel'
 stunnel_connection 'random_service' do
   connect "#{rnd_srv_node[:ipaddress]}:#{rnd_srv_node[:random_service][:port]}"
   accept node[:random_service][:local_accept_port]
-  notifies :restart, 'service[stunnel]'
+  notifies :reload, 'service[stunnel]'
 end
 ```
 
@@ -22,7 +22,7 @@ include_recipe 'stunnel::server'
 stunnel_connection 'random_service' do
   accept node[:random_service][:tunnel_port]
   connect node[:random_service][:port]
-  notifies :restart, 'service[stunnel]'
+  notifies :reload, 'service[stunnel]'
 end
 ```
 
