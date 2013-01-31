@@ -2,6 +2,24 @@ node[:stunnel][:packages].each do |s_pkg|
   package s_pkg
 end
 
+directory '/etc/stunnel/'
+
+if node[:stunnel][:certificates].empty?
+  execute "Create stunnel SSL Certificates" do
+    command "openssl req -subj \"#{node[:stunnel][:server_ssl_req]}\" -new -nodes -x509 -out /etc/stunnel/stunnel.pem -keyout /etc/stunnel/stunnel.pem"
+    creates '/etc/stunnel/stunnel.pem'
+  end
+else
+  node[:stunnel][:certificates].each do |name, data|
+    file "/etc/stunnel/#{name}.pem" do
+      owner node[:stunnel][:user]
+      group node[:stunnel][:group]
+      mode  0600
+      content data
+    end
+  end
+end
+
 # Create directory to hold the pid inside the chroot jail
 if(node[:stunnel][:use_chroot])
   directory "#{node[:stunnel][:chroot_path]}" do
