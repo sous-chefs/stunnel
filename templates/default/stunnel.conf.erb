@@ -55,7 +55,6 @@ CAfile = <%= node[:stunnel][:ca_file] %>
 ;CRLfile = /usr/bin/etc/stunnel/crls.pem
 
 ; debugging stuff (may useful for troubleshooting)
-;debug = 7
 <% if node[:stunnel][:debug_level] -%>
 debug = <%= node[:stunnel][:debug_level] %>
 <% end -%>
@@ -77,13 +76,11 @@ TIMEOUTclose = 0
 [<%= name %>]
 accept = <%= opts[:accept] %>
 connect = <%= opts[:connect] %>
-
-; SSL client mode
 <% if opts[:client] -%>
 client = yes
 <% end -%>
-
 <% unless opts[:timeout_close].nil? -%>
 TIMEOUTclose = <%= opts[:timeout_close] ? 1 : 0 %>
 <% end -%>
+
 <% end -%>
