@@ -52,8 +52,8 @@ options = <%= opt %>
 
 ; debugging stuff (may useful for troubleshooting)
 ;debug = 7
-<% if node[:stunnel][:debug_level] -%>
-debug = <%= node[:stunnel][:debug_level] %>
+<% if node[:stunnel][:debug] -%>
+debug = <%= node[:stunnel][:debug] %>
 <% end -%>
 <% if node[:stunnel][:output] -%>
 output = <%= node[:stunnel][:output] %>
