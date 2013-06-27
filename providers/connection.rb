@@ -6,10 +6,12 @@ def load_current_resource
 end
 
 action :create do
+  client_mode = new_resource.client or node[:stunnel][:client_mode]
   hsh = Mash.new(
     :connect => new_resource.connect,
     :accept => new_resource.accept,
-    :timeout_close => new_resource.timeout_close
+    :timeout_close => new_resource.timeout_close,
+    :client => client_mode
   )
   exist = Mash.new(node[:stunnel][:services][new_resource.service_name])
   if(exist != hsh)

@@ -59,11 +59,6 @@ debug = <%= node[:stunnel][:debug] %>
 output = <%= node[:stunnel][:output] %>
 <% end -%>
 
-; SSL client mode
-<% if node[:stunnel][:client_mode] -%>
-client = yes
-<% end -%>
-
 ; service-level configuration
 
 <% if node[:stunnel][:https][:enabled] %>
@@ -78,6 +73,7 @@ TIMEOUTclose = 0
 [<%= name %>]
 accept = <%= opts[:accept] %>
 connect = <%= opts[:connect] %>
+client = <%= opts[:client] ? "yes" : "no" %>
 <% unless opts[:timeout_close].nil? -%>
 TIMEOUTclose = <%= opts[:timeout_close] ? 1 : 0 %>
 <% end -%>
