@@ -1,3 +1,4 @@
+<<<<<<< a010dec4703c39ab041fb3c5bed1c8c552010929
 #
 # Cookbook Name:: stunnel
 # Attributes:: default
@@ -28,6 +29,10 @@ default['stunnel']['service_name'] = 'stunnel4'
 default['stunnel']['ssl_dir'] = '/etc/ssl'
 default['stunnel']['server_ssl_req']  = "/C=US/ST=Several/L=Locality/O=Example/OU=Operations/CN=#{node['fqdn']}/emailAddress=root@#{node['fqdn']}"
 default['stunnel']['cert_fqdn'] = node['fqdn']
+
+default['stunnel']['install_method'] = 'package'
+default['stunnel']['source_download'] = 'ftp://ftp.stunnel.org/stunnel/stunnel-4.56.tar.gz'
+default['stunnel']['source_checksum'] = '9cae2cfbe26d87443398ce50d7d5db54e5ea363889d5d2ec8d2778a01c871293'
 
 default['stunnel']['use_chroot'] = false
 default['stunnel']['chroot_path'] = '/usr/var/lib/stunnel'

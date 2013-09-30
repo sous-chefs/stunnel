@@ -7,3 +7,5 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 source_url       'https://github.com/aetrion/chef-stunnel'
 issues_url       'https://github.com/aetrion/chef-stunnel/issues'
 version          '2.1.0'
+
+depends 'build-essential'

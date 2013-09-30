@@ -17,8 +17,12 @@
 # limitations under the License.
 #
 
-node['stunnel']['packages'].each do |s_pkg|
-  package s_pkg
+if node['stunnel']['install_method'] == 'source'
+  include_recipe 'stunnel::source'
+else
+  node['stunnel']['packages'].each do |s_pkg|
+    package s_pkg
+  end
 end
 
 # Create directory to hold the pid inside the chroot jail
