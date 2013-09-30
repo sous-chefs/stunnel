@@ -12,7 +12,7 @@
 # NOTE: This init script was pulled from the ubuntu package
 # as it happily works on rhel systems too
 
-DEFAULTPIDFILE="/var/run/stunnel4.pid"
+DEFAULTPIDFILE="<%= node[:stunnel][:pidfile] %>"
 DAEMON=/usr/bin/stunnel
 NAME=stunnel
 DESC="SSL tunnels"

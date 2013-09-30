@@ -10,6 +10,9 @@ key = <%= node[:stunnel][:key_path] %>
 ; sslVersion = SSLv3 - intenet explorer does not work with only SSLv3
 sslVersion = <%= node[:stunnel][:ssl_version] %>
 options = <%= node[:stunnel][:ssl_options] %>
+<% if node[:stunnel][:fips] -%>
+fips = <%= node[:stunnel][:fips] %>
+<% end %>
 
 ; security enhancements for UNIX systems - comment them out on Win32
 ; for chroot a copy of some devices and files is needed within the jail
@@ -38,17 +41,24 @@ options = <%= opt %>
 
 ; authentication stuff needs to be configured to prevent MITM attacks
 ; it is not enabled by default!
-;verify = 2
-; don't forget to c_rehash CApath
-; CApath is located inside chroot jail
-;CApath = /certs
-; it's often easier to use CAfile
-;CAfile = /usr/bin/etc/stunnel/certs.pem
-; don't forget to c_rehash CRLpath
-; CRLpath is located inside chroot jail
-;CRLpath = /crls
-; alternatively CRLfile can be used
-;CRLfile = /usr/bin/etc/stunnel/crls.pem
+<% if node[:stunnel][:verify] -%>
+verify = <%= node[:stunnel][:verify] %>
+<% end -%>
+<% if node[:stunnel][:delay] -%>
+delay = <%= node[:stunnel][:delay] %>
+<% end -%>
+<% if node[:stunnel][:ca_path] -%>
+CApath = <%= node[:stunnel][:ca_path] %>
+<% end -%>
+<% if node[:stunnel][:ca_file] -%>
+CAfile = <%= node[:stunnel][:ca_file] %>
+<% end -%>
+<% if node[:stunnel][:crl_path] -%>
+CRLpath = <%= node[:stunnel][:crl_path] %>
+<% end -%>
+<% if node[:stunnel][:crl_file] -%>
+CRLfile = <%= node[:stunnel][:crl_file] %>
+<% end -%>
 
 ; debugging stuff (may useful for troubleshooting)
 ;debug = 7
@@ -64,6 +74,22 @@ output = <%= node[:stunnel][:output] %>
 client = yes
 <% end -%>
 
+; useful timeouts
+<% if node[:stunnel][:timeout_connect] -%>
+TIMEOUTconnect = <%= node[:stunnel][:timeout_connect] %>
+<% end -%>
+
+<% if node[:stunnel][:session_cache_size] -%>
+sessionCacheSize = <%= node[:stunnel][:session_cache_size] %>
+<% end -%>
+
+<% if node[:stunnel][:session_cache_timeout] -%>
+sessionCacheTimeout = <%= node[:stunnel][:session_cache_timeout] %>
+<% end -%>
+
+; failover configuration
+failover = <%= node[:stunnel][:failover] %>
+
 ; service-level configuration
 
 <% if node[:stunnel][:https][:enabled] %>
@@ -77,7 +103,13 @@ TIMEOUTclose = 0
 <% node[:stunnel][:services].each do |name, opts| -%>
 [<%= name %>]
 accept = <%= opts[:accept] %>
+<% if opts[:connect].class == Array -%>
+<% opts[:connect].each do |connection| -%>
+connect = <%= connection %>
+<% end -%>
+<% else -%>
 connect = <%= opts[:connect] %>
+<% end -%>
 <% unless opts[:timeout_close].nil? -%>
 TIMEOUTclose = <%= opts[:timeout_close] ? 1 : 0 %>
 <% end -%>

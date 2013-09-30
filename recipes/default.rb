@@ -1,5 +1,9 @@
-node[:stunnel][:packages].each do |s_pkg|
-  package s_pkg
+if node[:stunnel][:install_method] == 'source'
+  include_recipe 'stunnel::source'
+else
+  node[:stunnel][:packages].each do |s_pkg|
+    package s_pkg
+  end
 end
 
 # Create directory to hold the pid inside the chroot jail
@@ -19,8 +23,8 @@ unless(node.platform_family == 'debian')
     shell '/bin/false'
     supports :manage_home => true
   end
-  cookbook_file '/etc/init.d/stunnel4' do
-    source 'stunnel4'
+  template '/etc/init.d/stunnel4' do
+    source 'stunnel4.init.erb'
     mode 0755
   end
 end
@@ -30,6 +34,13 @@ ruby_block 'stunnel.conf notifier' do
     true
   end
   notifies :create, 'template[/etc/stunnel/stunnel.conf]', :delayed
+end
+
+%w{ /var/log/stunnel /var/run/stunnel }.each do |dir|
+  directory dir do
+    owner node[:stunnel][:user]
+    group node[:stunnel][:group]
+  end
 end
 
 template "/etc/stunnel/stunnel.conf" do
