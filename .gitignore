@@ -1,0 +1,8 @@
+.kitchen/
+.kitchen.local.yml
+bin
+tmp
+vendor
+.bundle
+.librarian
+.vagrant
