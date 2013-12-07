@@ -28,10 +28,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   #config.vm.provision :shell, :inline => $install_chef
   config.vm.define "docker" do |docker|
-    docker.vm.box = "bento-ubuntu-13.04"
+    docker.vm.box = "opscode-ubuntu-13.04"
     docker.vm.provider :vmware_fusion do |v, override|
+      override.vm.box = "bento-ubuntu-13.04"
       override.vm.box_url = "https://s3.amazonaws.com/hw-vagrant/bento-ubuntu-13.04_vmware_201308231111.box"
-      end
+    end
     docker.vm.provision :shell, :inline => $install_docker
     docker.vm.network "private_network", :ip => "192.168.42.42"
   end
