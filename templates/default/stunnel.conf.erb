@@ -81,4 +81,7 @@ connect = <%= opts[:connect] %>
 <% unless opts[:timeout_close].nil? -%>
 TIMEOUTclose = <%= opts[:timeout_close] ? 1 : 0 %>
 <% end -%>
+<% unless opts[:client].nil? -%>
+client = <%= opts[:client] ? "yes" : "no" %>
+<% end -%>
 <% end -%>
