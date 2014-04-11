@@ -76,10 +76,13 @@ TIMEOUTclose = 0
 
 <% node[:stunnel][:services].each do |name, opts| -%>
 [<%= name %>]
-<% %w[connect accept cafile cert verify].each do |opt| -%>
+<% %w[connect accept cert verify].each do |opt| -%>
 <% unless opts[opt].nil? -%>
 <%= opt %> = <%= opts[opt] %>
 <% end -%>
+<% end -%>
+<% unless opts[:cafile].nil? -%>
+CAfile = <%= opts[:cafile] %>
 <% end -%>
 <% unless opts[:timeout_close].nil? -%>
 TIMEOUTclose = <%= opts[:timeout_close] ? 1 : 0 %>

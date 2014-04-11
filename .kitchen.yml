@@ -15,4 +15,7 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[test_stunnel]
+      - recipe[test_stunnel::default]
+  - name: certificates
+    run_list:
+      - recipe[test_stunnel::certificates]
