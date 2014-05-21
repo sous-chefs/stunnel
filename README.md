@@ -63,6 +63,13 @@ default[:stunnel][:default][:files] = '/etc/stunnel/*.conf'
 default[:stunnel][:default][:options] = ''
 ```
 
+There is also an array to specify extra configuration options in stunnel.conf that aren't explicitly exposed with attributes.
+```ruby
+node.default[:stunnel][:config_options] = ['your_param=value','another_param=value']
+
+include_recipe 'stunnel'
+```
+
 ## Infos
 * Repository: https://github.com/hw-cookbooks/stunnel
 * IRC: Freenode @ #heavywater

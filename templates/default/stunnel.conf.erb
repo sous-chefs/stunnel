@@ -32,7 +32,7 @@ compression = <%= node[:stunnel][:compression] %>
 
 <% if node[:stunnel][:config_options] -%>
   <% Array(node[:stunnel][:config_options]).each do |opt| -%>
-options = <%= opt %>
+<%= opt %>
   <% end -%>
 <% end -%>
 
