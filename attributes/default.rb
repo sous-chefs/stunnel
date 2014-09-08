@@ -1,3 +1,5 @@
+default[:stunnel][:install_method] = 'package'
+
 case node.platform_family
 when 'debian'
   default[:stunnel][:packages] = %w(stunnel4)
@@ -5,6 +7,8 @@ else
   default[:stunnel][:packages] = %w(stunnel)
 end
 
+default[:stunnel][:source_download] = 'ftp://ftp.stunnel.org/stunnel/stunnel-4.56.tar.gz'
+default[:stunnel][:source_checksum] = '9cae2cfbe26d87443398ce50d7d5db54e5ea363889d5d2ec8d2778a01c871293'
 default[:stunnel][:service_name] = 'stunnel4'
 default[:stunnel][:ssl_dir] = '/etc/ssl'
 default[:stunnel][:server_ssl_req]  = "/C=US/ST=Several/L=Locality/O=Example/OU=Operations/CN=#{node[:fqdn]}/emailAddress=root@#{node[:fqdn]}"
