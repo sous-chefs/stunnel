@@ -31,6 +31,9 @@ end
 Lots of configurable attributes:
 
 ```ruby
+
+default[:stunnel][:install_method] = 'package'  # the other valid option is 'source'
+
 default[:stunnel][:packages] = %w(stunnel4)
 default[:stunnel][:service_name] = 'stunnel4'
 
