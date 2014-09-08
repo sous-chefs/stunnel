@@ -3,8 +3,10 @@ default[:stunnel][:install_method] = 'package'
 case node.platform_family
 when 'debian'
   default[:stunnel][:packages] = %w(stunnel4)
+  default[:stunnel][:ssl-devel] = 'libssl-dev'
 else
   default[:stunnel][:packages] = %w(stunnel)
+  default[:stunnel][:ssl-devel] = 'openssl-devel'
 end
 
 default[:stunnel][:source_download] = 'ftp://ftp.stunnel.org/stunnel/stunnel-4.56.tar.gz'

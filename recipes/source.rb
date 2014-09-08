@@ -1,5 +1,7 @@
 include_recipe 'build-essential'
 
+package node[:stunnel][:ssl-devel]
+
 remote_file "#{Chef::Config[:file_cache_path]}/stunnel.tar.gz" do
   source node[:stunnel][:source_download]
   checksum node[:stunnel][:source_checksum]
