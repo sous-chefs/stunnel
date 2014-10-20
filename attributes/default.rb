@@ -1,4 +1,3 @@
-<<<<<<< a010dec4703c39ab041fb3c5bed1c8c552010929
 #
 # Cookbook Name:: stunnel
 # Attributes:: default
@@ -21,8 +20,10 @@
 case node['platform_family']
 when 'debian'
   default['stunnel']['packages'] = %w(stunnel4)
+  default['stunnel']['ssl-devel'] = 'libssl-dev'
 else
   default['stunnel']['packages'] = %w(stunnel)
+  default['stunnel']['ssl-devel'] = 'openssl-devel'
 end
 
 default['stunnel']['service_name'] = 'stunnel4'
