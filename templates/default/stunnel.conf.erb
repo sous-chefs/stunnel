@@ -90,4 +90,9 @@ TIMEOUTclose = <%= opts[:timeout_close] ? 1 : 0 %>
 <% unless opts[:client].nil? -%>
 client = <%= opts[:client] ? "yes" : "no" %>
 <% end -%>
+<% unless opts[:options].nil? -%>
+<% opts[:options].each do |key, val| -%>
+<%= key %> = <%= val %>
+<% end -%>
+<% end -%>
 <% end -%>
