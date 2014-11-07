@@ -22,3 +22,8 @@ suites:
   - name: certificates
     run_list:
       - recipe[test_stunnel::certificates]
+  - name: source
+    run_list:
+      - recipe[test_stunnel::default]
+    attributes:
+      install_method: 'source'
