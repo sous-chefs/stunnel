@@ -6,10 +6,23 @@ cert = <%= node[:stunnel][:certificate_path] %>
 key = <%= node[:stunnel][:key_path] %>
 <% end -%>
 
+; enable FIPS 140-2 mode if needed for compliance
+; 5.x default is to disable FIPS mode
+; 4.x default is to enable FIPS mode if stunnel compiled with FIPS enabled OpenSSL
+<% if node[:stunnel][:fips_enable] %>
+fips = yes
+<% else %>
+fips = no
+<% end %>
+
 ; protocol version (all, SSLv2, SSLv3, TLSv1)
 ; sslVersion = SSLv3 - intenet explorer does not work with only SSLv3
 sslVersion = <%= node[:stunnel][:ssl_version] %>
-options = <%= node[:stunnel][:ssl_options] %>
+<% if node[:stunnel][:ssl_options] -%>
+  <% Array(node[:stunnel][:ssl_options]).each do |opt| -%>
+options = <%= opt %>
+  <% end -%>
+<% end -%>
 
 ; security enhancements for UNIX systems - comment them out on Win32
 ; for chroot a copy of some devices and files is needed within the jail

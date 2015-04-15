@@ -50,8 +50,10 @@ default[:stunnel][:https][:connect_port] = "81"
 
 default[:stunnel][:client_mode] = true
 
+default[:stunnel][:fips_enable] = false
+
 default[:stunnel][:ssl_version] = 'all'
-default[:stunnel][:ssl_options] = 'NO_SSLv2'
+default[:stunnel][:ssl_options] = %w(NO_SSLv3 NO_SSLv2)
 default[:stunnel][:socket_tunings] = %w(l:TCP_NODELAY=1 r:TCP_NODELAY=1)
 default[:stunnel][:compression] = nil # zlib
 default[:stunnel][:debug] = nil # 3
