@@ -36,21 +36,25 @@ directory node['stunnel']['chroot_path'] do
   only_if { node['stunnel']['use_chroot'] }
 end
 
-user 'stunnel4' do
-  home '/var/run/stunnel4'
-  system true
-  shell '/bin/false'
-  manage_home true
-  not_if { node['platform_family'] == 'debian' }
-end
-
-template '/etc/init.d/stunnel4' do
-  source 'init-stunnel4.erb'
-  mode 0755
-  variables(
-    ulimit: node['stunnel']['ulimit'],
-    daemon: node['stunnel']['daemon']
-  )
+unless platform_family?('debian')
+  user 'stunnel4' do
+    home '/var/run/stunnel4'
+    system true
+    shell '/bin/false'
+    manage_home true
+  end
+  if platform_family?('rhel') && node['platform_version'].to_i >= 7
+    include_recipe 'stunnel::systemd_service'
+  else
+    template '/etc/init.d/stunnel4' do
+      source 'init-stunnel4.erb'
+      mode 0755
+      variables(
+        ulimit: node['stunnel']['ulimit'],
+        daemon: node['stunnel']['daemon']
+      )
+    end
+  end
 end
 
 ruby_block 'stunnel.conf notifier' do

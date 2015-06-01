@@ -1,0 +1,10 @@
+[Unit]
+Description=stunnel TLS proxy
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/stunnel
+
+[Install]
+WantedBy=multi-user.target
