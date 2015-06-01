@@ -28,6 +28,7 @@ setuid = <%= node['stunnel']['user'] %>
 setgid = <%= node['stunnel']['group'] %>
 ; PID is created inside the chroot jail
 pid = <%= node['stunnel']['pidfile'] %>
+foreground = <%= node['stunnel']['foreground'] ? 'yes' : 'no' %>
 
 ; performance tunings
 <% Array(node['stunnel']['socket_tunings']).each do |s| -%>
