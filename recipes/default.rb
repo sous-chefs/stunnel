@@ -19,9 +19,13 @@ unless(node.platform_family == 'debian')
     shell '/bin/false'
     supports :manage_home => true
   end
-  cookbook_file '/etc/init.d/stunnel4' do
-    source 'stunnel4'
-    mode 0755
+  if node.platform_family == 'rhel' && node['platform_version'].to_i >= 7
+    include_recipe 'stunnel::systemd_service'
+  else
+    cookbook_file '/etc/init.d/stunnel4' do
+      source 'stunnel4'
+      mode 0755
+    end
   end
 end
 
