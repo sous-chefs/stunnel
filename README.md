@@ -61,6 +61,10 @@ default[:stunnel][:output] = '/var/log/stunnel.log'
 default[:stunnel][:default][:enabled] = 1
 default[:stunnel][:default][:files] = '/etc/stunnel/*.conf'
 default[:stunnel][:default][:options] = ''
+
+# certificate/key is needed in server mode and optional in client mode 
+default[:stunnel][:certificate_path] = nil # /etc/pki/stunnel/cert.pem
+default[:stunnel][:key_path] = nil # /etc/pki/stunnel/key.pem
 ```
 
 ## ChefSpec Matchers
