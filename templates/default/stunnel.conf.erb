@@ -11,6 +11,8 @@ key = <%= node[:stunnel][:key_path] %>
 sslVersion = <%= node[:stunnel][:ssl_version] %>
 options = <%= node[:stunnel][:ssl_options] %>
 
+syslog = no
+
 ; security enhancements for UNIX systems - comment them out on Win32
 ; for chroot a copy of some devices and files is needed within the jail
 <% if node[:stunnel][:use_chroot] %>
