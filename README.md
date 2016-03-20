@@ -63,6 +63,47 @@ default[:stunnel][:default][:files] = '/etc/stunnel/*.conf'
 default[:stunnel][:default][:options] = ''
 ```
 
+## ChefSpec Matchers
+
+A set of ChefSpec matchers is included, for unit testing with ChefSpec. To illustrate:
+
+Recipe code:
+
+```ruby
+stunnel_connection 'haproxy_ssl' do
+  accept    '443'
+  connect   '8443'
+end
+```
+
+And the matching spec:
+
+```ruby
+it 'should create stunnel_connection haproxy_ssl' do
+  expect(chef_run).to create_stunnel_connection('haproxy_ssl').with(
+    accept:  '443',
+    connect: '8443'
+  )
+end
+```
+
+You can also make assertions for notifying other resources:
+
+```ruby
+it 'should notify stunnel to restart on changes to stunnel_connection[haproxy_ssl]' do
+  resource = chef_run.stunnel_connection('haproxy_ssl')
+  expect(resource).to notify('service[stunnel]').to(:restart)
+end
+```
+
+A matcher for the delete action is also available:
+
+```ruby
+it 'should delete stunnel_connection haproxy_ssl' do
+  expect(chef_run).to delete_stunnel_connection('haproxy_ssl')
+end
+```
+
 ## Infos
 * Repository: https://github.com/hw-cookbooks/stunnel
 * IRC: Freenode @ #heavywater
