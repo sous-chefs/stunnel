@@ -11,8 +11,8 @@ RSpec.configure do |c|
   end
 end
 
-describe "Stunnel Client" do
-  it "returns an nginx reponse" do
+describe 'Stunnel Client' do
+  it 'returns an nginx reponse' do
     uri = URI('http://localhost:9090')
     response = Net::HTTP.get_response(uri)
     expect(response.to_hash['server'].first).to match(/nginx/)

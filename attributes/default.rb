@@ -30,14 +30,14 @@ default[:stunnel][:server_ssl_req]  = "/C=US/ST=Several/L=Locality/O=Example/OU=
 default[:stunnel][:cert_fqdn] = node[:fqdn]
 
 default[:stunnel][:use_chroot] = false
-default[:stunnel][:chroot_path] = "/usr/var/lib/stunnel"
-default[:stunnel][:pidfile] = "/tmp/stunnel.pid"
-default[:stunnel][:user] = "root"
-default[:stunnel][:group] = "root"
+default[:stunnel][:chroot_path] = '/usr/var/lib/stunnel'
+default[:stunnel][:pidfile] = '/tmp/stunnel.pid'
+default[:stunnel][:user] = 'root'
+default[:stunnel][:group] = 'root'
 
 default[:stunnel][:https][:enabled] = false
-default[:stunnel][:https][:accept_port] = "443"
-default[:stunnel][:https][:connect_port] = "81"
+default[:stunnel][:https][:accept_port] = '443'
+default[:stunnel][:https][:connect_port] = '81'
 
 default[:stunnel][:client_mode] = true
 

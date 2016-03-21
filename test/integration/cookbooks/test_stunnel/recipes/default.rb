@@ -17,8 +17,8 @@
 # limitations under the License.
 #
 
-include_recipe "stunnel::server"
-include_recipe "nginx"
+include_recipe 'stunnel::server'
+include_recipe 'nginx'
 
 stunnel_connection 'server' do
   accept 8080
@@ -28,7 +28,7 @@ end
 
 stunnel_connection 'client' do
   accept 9090
-  connect "localhost:8080"
+  connect 'localhost:8080'
   client true
   notifies :restart, 'service[stunnel]'
 end

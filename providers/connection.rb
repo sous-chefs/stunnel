@@ -26,13 +26,13 @@ end
 
 action :create do
   hsh = Mash.new(
-    :connect => new_resource.connect,
-    :accept => new_resource.accept,
-    :cafile => new_resource.cafile,
-    :cert => new_resource.cert,
-    :verify => new_resource.verify,
-    :timeout_close => new_resource.timeout_close,
-    :client => new_resource.client
+    connect: new_resource.connect,
+    accept: new_resource.accept,
+    cafile: new_resource.cafile,
+    cert: new_resource.cert,
+    verify: new_resource.verify,
+    timeout_close: new_resource.timeout_close,
+    client: new_resource.client
   )
   exist = Mash.new(node[:stunnel][:services][new_resource.service_name])
   if(exist != hsh)

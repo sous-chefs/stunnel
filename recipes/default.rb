@@ -36,7 +36,7 @@ unless(node.platform_family == 'debian')
     home '/var/run/stunnel4'
     system true
     shell '/bin/false'
-    supports :manage_home => true
+    supports manage_home: true
   end
   cookbook_file '/etc/init.d/stunnel4' do
     source 'stunnel4'
@@ -51,21 +51,21 @@ ruby_block 'stunnel.conf notifier' do
   notifies :create, 'template[/etc/stunnel/stunnel.conf]', :delayed
 end
 
-template "/etc/stunnel/stunnel.conf" do
-  source "stunnel.conf.erb"
+template '/etc/stunnel/stunnel.conf' do
+  source 'stunnel.conf.erb'
   mode 0644
   action :nothing
   notifies :restart, 'service[stunnel]', :delayed
 end
 
-template "/etc/default/stunnel4" do
-  source "stunnel.default.erb"
+template '/etc/default/stunnel4' do
+  source 'stunnel.default.erb'
   mode 0644
 end
 
-service "stunnel" do
+service 'stunnel' do
   service_name node[:stunnel][:service_name]
-  supports :restart => true, :reload => true
+  supports restart: true, reload: true
   action [ :enable, :start ]
   not_if do
     node[:stunnel][:services].empty?
