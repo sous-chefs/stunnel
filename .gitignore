@@ -6,5 +6,5 @@ vendor
 .bundle
 .librarian
 .vagrant
-Cheffile.lock
 Gemfile.lock
+Berksfile.lock

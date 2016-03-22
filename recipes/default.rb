@@ -1,28 +1,47 @@
-node[:stunnel][:packages].each do |s_pkg|
+#
+# Cookbook Name:: stunnel
+# Recipes:: default
+#
+# Copyright 2016 Aetrion, LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+node['stunnel']['packages'].each do |s_pkg|
   package s_pkg
 end
 
 # Create directory to hold the pid inside the chroot jail
-if(node[:stunnel][:use_chroot])
-  directory "#{node[:stunnel][:chroot_path]}" do
-    owner node[:stunnel][:user]
-    group node[:stunnel][:group]
-    recursive true
-    action :create
-  end
+directory node['stunnel']['chroot_path'] do
+  owner node['stunnel']['user']
+  group node['stunnel']['group']
+  recursive true
+  action :create
+  only_if { node['stunnel']['use_chroot'] }
 end
 
-unless(node.platform_family == 'debian')
-  user 'stunnel4' do
-    home '/var/run/stunnel4'
-    system true
-    shell '/bin/false'
-    supports :manage_home => true
-  end
-  cookbook_file '/etc/init.d/stunnel4' do
-    source 'stunnel4'
-    mode 0755
-  end
+user 'stunnel4' do
+  home '/var/run/stunnel4'
+  system true
+  shell '/bin/false'
+  supports manage_home: true
+  not_if { node['platform_family'] == 'debian' }
+end
+
+cookbook_file '/etc/init.d/stunnel4' do
+  source 'stunnel4'
+  mode 0755
+  not_if { node['platform_family'] == 'debian' }
 end
 
 ruby_block 'stunnel.conf notifier' do
@@ -32,23 +51,23 @@ ruby_block 'stunnel.conf notifier' do
   notifies :create, 'template[/etc/stunnel/stunnel.conf]', :delayed
 end
 
-template "/etc/stunnel/stunnel.conf" do
-  source "stunnel.conf.erb"
+template '/etc/stunnel/stunnel.conf' do
+  source 'stunnel.conf.erb'
   mode 0644
   action :nothing
   notifies :restart, 'service[stunnel]', :delayed
 end
 
-template "/etc/default/stunnel4" do
-  source "stunnel.default.erb"
+template '/etc/default/stunnel4' do
+  source 'stunnel.default.erb'
   mode 0644
 end
 
-service "stunnel" do
-  service_name node[:stunnel][:service_name]
-  supports :restart => true, :reload => true
+service 'stunnel' do
+  service_name node['stunnel']['service_name']
+  supports restart: true, reload: true
   action [ :enable, :start ]
   not_if do
-    node[:stunnel][:services].empty?
+    node['stunnel']['services'].empty?
   end
 end

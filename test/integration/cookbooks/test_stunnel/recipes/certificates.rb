@@ -17,32 +17,32 @@
 # limitations under the License.
 #
 
-include_recipe "stunnel::server"
-include_recipe "nginx"
+include_recipe 'stunnel::server'
+include_recipe 'nginx'
 
-certificates = data_bag_item("stunnel", "certificates")
+certificates = data_bag_item('stunnel', 'certificates')
 
-cert_dir = "/etc/stunnel/certificates"
+cert_dir = '/etc/stunnel/certificates'
 directory cert_dir do
   recursive true
-  owner "root"
-  group "root"
+  owner 'root'
+  group 'root'
   mode 0755
 end
 
-ca_pem = File.join(cert_dir, "ca.pem")
+ca_pem = File.join(cert_dir, 'ca.pem')
 file ca_pem do
-  content certificates["ca"]
-  owner "root"
-  group "root"
+  content certificates['ca']
+  owner 'root'
+  group 'root'
   mode 0700
 end
 
-cert_pem = File.join(cert_dir, "cert.pem")
+cert_pem = File.join(cert_dir, 'cert.pem')
 file cert_pem do
-  content certificates["cert"]
-  owner "root"
-  group "root"
+  content certificates['cert']
+  owner 'root'
+  group 'root'
   mode 0700
 end
 
@@ -57,7 +57,7 @@ end
 
 stunnel_connection 'client' do
   accept 9090
-  connect "localhost:8080"
+  connect 'localhost:8080'
   cafile ca_pem
   cert cert_pem
   verify 2
