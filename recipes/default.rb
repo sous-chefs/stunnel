@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-node[:stunnel][:packages].each do |s_pkg|
+node['stunnel']['packages'].each do |s_pkg|
   package s_pkg
 end
 
@@ -63,10 +63,10 @@ template '/etc/default/stunnel4' do
 end
 
 service 'stunnel' do
-  service_name node[:stunnel][:service_name]
+  service_name node['stunnel']['service_name']
   supports restart: true, reload: true
   action [ :enable, :start ]
   not_if do
-    node[:stunnel][:services].empty?
+    node['stunnel']['services'].empty?
   end
 end
