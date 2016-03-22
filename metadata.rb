@@ -1,6 +1,9 @@
 name             'stunnel'
-maintainer       'Heavy Water'
-maintainer_email 'support@hw-ops.com'
+maintainer       'Aetrion, LLC.'
+maintainer_email 'ops@dnsimple.com'
 license          'Apache 2.0'
-description      'Installs/Configures stunnel'
+description      'Provides resources to help install and configure stunnel'
+long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
+source_url       'https://github.com/aetrion/chef-stunnel'
+issues_url       'https://github.com/aetrion/chef-stunnel/issues'
 version          '2.1.0'
