@@ -22,13 +22,12 @@ node[:stunnel][:packages].each do |s_pkg|
 end
 
 # Create directory to hold the pid inside the chroot jail
-if(node[:stunnel][:use_chroot])
-  directory "#{node[:stunnel][:chroot_path]}" do
-    owner node[:stunnel][:user]
-    group node[:stunnel][:group]
-    recursive true
-    action :create
-  end
+directory node['stunnel']['chroot_path'] do
+  owner node['stunnel']['user']
+  group node['stunnel']['group']
+  recursive true
+  action :create
+  only_if { node['stunnel']['use_chroot'] }
 end
 
 unless(node.platform_family == 'debian')
