@@ -30,17 +30,18 @@ directory node['stunnel']['chroot_path'] do
   only_if { node['stunnel']['use_chroot'] }
 end
 
-unless(node.platform_family == 'debian')
-  user 'stunnel4' do
-    home '/var/run/stunnel4'
-    system true
-    shell '/bin/false'
-    supports manage_home: true
-  end
-  cookbook_file '/etc/init.d/stunnel4' do
-    source 'stunnel4'
-    mode 0755
-  end
+user 'stunnel4' do
+  home '/var/run/stunnel4'
+  system true
+  shell '/bin/false'
+  supports manage_home: true
+  not_if { node['platform_family'] == 'debian' }
+end
+
+cookbook_file '/etc/init.d/stunnel4' do
+  source 'stunnel4'
+  mode 0755
+  not_if { node['platform_family'] == 'debian' }
 end
 
 ruby_block 'stunnel.conf notifier' do

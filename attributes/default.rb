@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-case node.platform_family
+case node['platform_family']
 when 'debian'
   default['stunnel']['packages'] = %w(stunnel4)
 else
