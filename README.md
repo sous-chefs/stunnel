@@ -4,9 +4,9 @@
 
 Chef cookbook to install and configure stunnel
 
-## LWRP
+## Resources
 
-An LWRP is provided for defining stunnel connections. As a client:
+An `stunnel_connection` resource is provided for defining stunnel connections. As a client:
 ```ruby
 include_recipe 'stunnel'
 
@@ -67,7 +67,9 @@ default['stunnel']['default']['options'] = ''
 
 ## ChefSpec Matchers
 
-A set of ChefSpec matchers is included, for unit testing with ChefSpec. To illustrate:
+A set of ChefSpec matchers is included for unit testing with ChefSpec. These
+are automatically available when you make this cookbook a dependency in your
+cookbook's metadata. To illustrate:
 
 Recipe code:
 
@@ -106,6 +108,15 @@ it 'should delete stunnel_connection haproxy_ssl' do
 end
 ```
 
+## Testing Locally
+
+To run the tests, make sure you've got the latest [ChefDK][] along with
+[Vagrant][] then you can run `chef exec kitchen test` which will run the
+entire test suite on all platforms.
+
+If you want to speed things up, install the [vagrant-cachier][] gem by doing
+the following: `vagrant plugin install vagrant-cachier`
+
 ## License and Authors
 
 * Author:: [Aaron Kalin](https://github.com/martinisoft)
@@ -125,3 +136,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
+
+[ChefDK]: https://downloads.chef.io/chef-dk/
+[Vagrant]: https://www.vagrantup.com/downloads.html
+[vagrant-cachier]: https://github.com/fgrehm/vagrant-cachier
