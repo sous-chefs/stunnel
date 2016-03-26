@@ -1,5 +1,7 @@
 # stunnel
 
+[![Build Status](https://travis-ci.org/aetrion/chef-stunnel.svg?branch=master)](https://travis-ci.org/aetrion/chef-stunnel)
+
 Chef cookbook to install and configure stunnel
 
 ## LWRP
