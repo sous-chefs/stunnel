@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'emeril', group: :release
+group :release do
+  gem 'stove', '~> 3.2.8'
+end
 
 group :lint do
   gem 'foodcritic', '~> 6.0'
