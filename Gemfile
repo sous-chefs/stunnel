@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 group :release do
   gem 'stove', '~> 3.2.8'
+  gem 'github_changelog_generator', '~> 1.11.8'
 end
 
 group :lint do
