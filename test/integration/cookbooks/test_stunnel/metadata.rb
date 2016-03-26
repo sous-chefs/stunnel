@@ -1,10 +1,10 @@
 name             'test_stunnel'
-maintainer       'Heavy Water Operations, LLC'
-maintainer_email 'support@hw-ops.com'
+maintainer       'Aetrion, LLC.'
+maintainer_email 'ops@dnsimple.com'
 license          'Apache 2.0'
-description      'Installs/Configures test_stunnel'
+description      'Tests stunnel cookbook integration'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.1.0'
 
 depends 'stunnel'
-depends 'nginx'
+depends 'nginx', '~> 2.7.6'
