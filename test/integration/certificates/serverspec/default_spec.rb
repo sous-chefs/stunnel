@@ -1,15 +1,6 @@
-require 'serverspec'
+require 'spec_helper'
 require 'net/http'
 require 'uri'
-
-include Serverspec::Helper::Exec
-include Serverspec::Helper::DetectOS
-
-RSpec.configure do |c|
-  c.before :all do
-    c.path = '/sbin:/usr/sbin'
-  end
-end
 
 describe 'Stunnel Client' do
   it 'returns an nginx reponse' do
