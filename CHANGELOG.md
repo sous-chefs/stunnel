@@ -4,6 +4,11 @@
 
 [Full Changelog](https://github.com/aetrion/chef-stunnel/compare/v2.1.0...HEAD)
 
+**Implemented enhancements:**
+
+- Expose SSL ciphers option [\#23](https://github.com/aetrion/chef-stunnel/pull/23) ([thoutenbos](https://github.com/thoutenbos))
+- Source install [\#22](https://github.com/aetrion/chef-stunnel/pull/22) ([thoutenbos](https://github.com/thoutenbos))
+
 **Closed issues:**
 
 - Latest version 0.2.5 should be version 2.0.5 [\#16](https://github.com/aetrion/chef-stunnel/issues/16)
