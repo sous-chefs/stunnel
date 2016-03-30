@@ -28,3 +28,4 @@ attribute :cert, kind_of: String
 attribute :verify, kind_of: Integer
 attribute :timeout_close, kind_of: [TrueClass,FalseClass]
 attribute :client, kind_of: [TrueClass,FalseClass]
+attribute :protocol, kind_of: String
