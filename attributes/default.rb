@@ -37,7 +37,7 @@ default['stunnel']['source_checksum'] = '9cae2cfbe26d87443398ce50d7d5db54e5ea363
 
 default['stunnel']['use_chroot'] = false
 default['stunnel']['chroot_path'] = '/usr/var/lib/stunnel'
-default['stunnel']['pidfile'] = '/tmp/stunnel.pid'
+default['stunnel']['pidfile'] = '/var/run/stunnel4.pid'
 default['stunnel']['user'] = 'root'
 default['stunnel']['group'] = 'root'
 

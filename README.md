@@ -44,7 +44,7 @@ default['stunnel']['cert_fqdn'] = node['fqdn']
 
 default['stunnel']['use_chroot'] = false
 default['stunnel']['chroot_path'] = "/usr/var/lib/stunnel"
-default['stunnel']['pidfile'] = "/tmp/stunnel.pid"
+default['stunnel']['pidfile'] = "/var/run/stunnel4.pid"
 default['stunnel']['user'] = "root"
 default['stunnel']['group'] = "root"
 
