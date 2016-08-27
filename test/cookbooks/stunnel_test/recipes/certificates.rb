@@ -64,3 +64,8 @@ stunnel_connection 'client' do
   client true
   notifies :restart, 'service[stunnel]'
 end
+
+# for inspec command
+package 'curl' do
+  action :install
+end
