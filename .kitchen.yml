@@ -6,6 +6,10 @@ driver:
 provisioner:
   name: chef_zero
 
+# verifier:
+#   name: inspec
+#   format: doc
+  
 platforms:
   - name: ubuntu-12.04
     run_list:
@@ -18,12 +22,12 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[test_stunnel::default]
+      - recipe[stunnel_test::default]
   - name: certificates
     run_list:
-      - recipe[test_stunnel::certificates]
+      - recipe[stunnel_test::certificates]
   - name: source
     run_list:
-      - recipe[test_stunnel::default]
+      - recipe[stunnel_test::default]
     attributes:
       install_method: 'source'
