@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: test_stunnel
+# Cookbook Name:: stunnel_test
 # Recipe:: default
 #
 # Copyright 2013, Heavy Water Operations, LLC
@@ -17,8 +17,8 @@
 # limitations under the License.
 #
 
+include_recipe 'stunnel_test::webservers'
 include_recipe 'stunnel::server'
-include_recipe 'nginx'
 
 stunnel_connection 'server' do
   accept 8080

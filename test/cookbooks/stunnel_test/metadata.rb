@@ -6,4 +6,4 @@ description      'Tests stunnel cookbook integration'
 version          '0.1.0'
 
 depends 'stunnel'
-depends 'nginx', '~> 2.7.6'
+depends 'httpd'

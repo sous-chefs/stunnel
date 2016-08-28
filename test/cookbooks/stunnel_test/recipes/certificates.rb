@@ -17,8 +17,8 @@
 # limitations under the License.
 #
 
+include_recipe 'stunnel_test::webservers'
 include_recipe 'stunnel::server'
-include_recipe 'nginx'
 
 certificates = data_bag_item('stunnel', 'certificates')
 

@@ -9,7 +9,7 @@ provisioner:
 verifier:
   name: inspec
   format: doc
-  
+
 platforms:
   - name: ubuntu-12.04
     run_list:
