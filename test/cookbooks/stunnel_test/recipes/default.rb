@@ -18,7 +18,6 @@
 #
 
 include_recipe 'stunnel_test::webservers'
-include_recipe 'stunnel::server'
 
 stunnel_connection 'server' do
   accept 8080
@@ -32,6 +31,8 @@ stunnel_connection 'client' do
   client true
   notifies :restart, 'service[stunnel]'
 end
+
+include_recipe 'stunnel::server'
 
 # for inspec command
 package 'curl' do

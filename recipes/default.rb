@@ -48,17 +48,10 @@ cookbook_file '/etc/init.d/stunnel4' do
   not_if { node['platform_family'] == 'debian' }
 end
 
-ruby_block 'stunnel.conf notifier' do
-  block do
-    true
-  end
-  notifies :create, 'template[/etc/stunnel/stunnel.conf]', :delayed
-end
-
 template '/etc/stunnel/stunnel.conf' do
   source 'stunnel.conf.erb'
   mode 0644
-  action :nothing
+  action :create
   notifies :restart, 'service[stunnel]', :delayed
 end
 
