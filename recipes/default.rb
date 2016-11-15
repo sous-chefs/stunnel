@@ -59,7 +59,7 @@ template '/etc/stunnel/stunnel.conf' do
   source 'stunnel.conf.erb'
   mode 0644
   action :nothing
-  notifies :restart, 'service[stunnel]', :delayed
+  notifies :reload, 'service[stunnel]', :delayed
 end
 
 template '/etc/default/stunnel4' do
