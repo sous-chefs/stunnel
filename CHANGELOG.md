@@ -1,6 +1,6 @@
 # Change Log
 
-## [Unreleased](https://github.com/aetrion/chef-stunnel/tree/HEAD)
+## [v2.2.0](https://github.com/aetrion/chef-stunnel/tree/HEAD)
 
 [Full Changelog](https://github.com/aetrion/chef-stunnel/compare/v2.1.0...HEAD)
 
@@ -18,6 +18,7 @@
 - Modernize cookbook [\#30](https://github.com/aetrion/chef-stunnel/pull/30) ([martinisoft](https://github.com/martinisoft))
 - Add basic ChefSpec matchers [\#20](https://github.com/aetrion/chef-stunnel/pull/20) ([jeffbyrnes](https://github.com/jeffbyrnes))
 - Feature/log warnings [\#9](https://github.com/aetrion/chef-stunnel/pull/9) ([dje](https://github.com/dje))
+- Replace restart for reload on a configuration change [\35](https://github.com/aetrion/chef-stunnel/pull/35) ([therobot](https://github.com/therobot))
 
 ## [v2.1.0](https://github.com/aetrion/chef-stunnel/tree/v2.1.0) (2014-04-11)
 [Full Changelog](https://github.com/aetrion/chef-stunnel/compare/v2.0.4...v2.1.0)
