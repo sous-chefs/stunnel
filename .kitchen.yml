@@ -1,7 +1,6 @@
 ---
 driver:
   name: vagrant
-  vagrantfile_erb: Vagrantfile.erb
 
 provisioner:
   name: chef_zero
@@ -19,6 +18,12 @@ suites:
   - name: default
     run_list:
       - recipe[test_stunnel::default]
+  - name: ulimit
+    run_list:
+      - recipe[test_stunnel::default]
+    attributes:
+      stunnel:
+        ulimit: 8192
   - name: certificates
     run_list:
       - recipe[test_stunnel::certificates]

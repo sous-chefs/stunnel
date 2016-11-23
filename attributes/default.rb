@@ -20,9 +20,11 @@
 case node['platform_family']
 when 'debian'
   default['stunnel']['packages'] = %w(stunnel4)
+  default['stunnel']['daemon'] = 'stunnel4'
   default['stunnel']['ssl-devel'] = 'libssl-dev'
 else
   default['stunnel']['packages'] = %w(stunnel)
+  default['stunnel']['daemon'] = 'stunnel'
   default['stunnel']['ssl-devel'] = 'openssl-devel'
 end
 
@@ -40,6 +42,7 @@ default['stunnel']['chroot_path'] = '/usr/var/lib/stunnel'
 default['stunnel']['pidfile'] = '/tmp/stunnel.pid'
 default['stunnel']['user'] = 'root'
 default['stunnel']['group'] = 'root'
+default['stunnel']['ulimit'] = nil
 
 default['stunnel']['https']['enabled'] = false
 default['stunnel']['https']['accept_port'] = '443'

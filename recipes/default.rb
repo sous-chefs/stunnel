@@ -42,10 +42,13 @@ user 'stunnel4' do
   not_if { node['platform_family'] == 'debian' }
 end
 
-cookbook_file '/etc/init.d/stunnel4' do
-  source 'stunnel4'
+template '/etc/init.d/stunnel4' do
+  source 'init-stunnel4.erb'
   mode 0755
-  not_if { node['platform_family'] == 'debian' }
+  variables(
+    ulimit: node['stunnel']['ulimit'],
+    daemon: node['stunnel']['daemon']
+  )
 end
 
 ruby_block 'stunnel.conf notifier' do
