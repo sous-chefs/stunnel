@@ -1,6 +1,15 @@
 # Change Log
 
-## [v2.2.0](https://github.com/aetrion/chef-stunnel/tree/HEAD)
+## [v2.3.0](https://github.com/aetrion/chef-stunnel/tree/HEAD)
+
+
+[Full Changelog](https://github.com/aetrion/chef-stunnel/compare/v2.2.0...HEAD)
+
+**Implemented enhancements:**
+
+- Setting limits on the number of open files which stunnel depends on via init script.
+
+## [v2.2.0](https://github.com/aetrion/chef-stunnel/tree/v2.2.0)
 
 [Full Changelog](https://github.com/aetrion/chef-stunnel/compare/v2.1.0...HEAD)
 
