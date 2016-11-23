@@ -47,6 +47,7 @@ default['stunnel']['chroot_path'] = "/usr/var/lib/stunnel"
 default['stunnel']['pidfile'] = "/tmp/stunnel.pid"
 default['stunnel']['user'] = "root"
 default['stunnel']['group'] = "root"
+default['stunnel']['ulimit'] = nil # set to a number to add ulimit setting to init script
 
 default['stunnel']['https']['enabled'] = false
 default['stunnel']['https']['accept_port'] = "443"
