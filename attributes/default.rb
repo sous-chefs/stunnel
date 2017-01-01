@@ -50,6 +50,7 @@ default['stunnel']['https']['connect_port'] = '81'
 
 default['stunnel']['client_mode'] = true
 
+default['stunnel']['fips'] = nil
 default['stunnel']['ssl_version'] = 'all'
 default['stunnel']['ssl_options'] = 'NO_SSLv2'
 default['stunnel']['ciphers'] = nil

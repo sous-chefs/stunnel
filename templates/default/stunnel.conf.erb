@@ -63,6 +63,11 @@ debug = <%= node['stunnel']['debug'] %>
 output = <%= node['stunnel']['output'] %>
 <% end -%>
 
+; Enable/disable FIPS mode
+<% unless node['stunnel']['fips'].nil? %>
+fips = <%= node['stunnel']['fips'] ? 'yes' : 'no' %>
+<% end %>
+
 ; SSL client mode
 <% if node['stunnel']['client_mode'] -%>
 client = yes
