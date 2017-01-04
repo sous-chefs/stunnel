@@ -55,6 +55,7 @@ default['stunnel']['https']['connect_port'] = "81"
 
 default['stunnel']['client_mode'] = true
 
+default['stunnel']['fips'] = nil
 default['stunnel']['ssl_version'] = 'all'
 default['stunnel']['ssl_options'] = 'NO_SSLv2'
 default['stunnel']['socket_tunings'] = %w(l:TCP_NODELAY=1 r:TCP_NODELAY=1)
@@ -67,6 +68,15 @@ default['stunnel']['default']['enabled'] = 1
 default['stunnel']['default']['files'] = '/etc/stunnel/*.conf'
 default['stunnel']['default']['options'] = ''
 ```
+
+### FIPS
+
+FIPS mode can be enabled or disabled with the attribute `['stunnel']['fips']`. A value of nil will omit the
+"fips" setting from the config file altogether, falling back to the default behavior for that version of stunnel:
+
+- For 4.x releases FIPS defaults to on if stunnel was compiled with FIPS support.
+- For 5.x releases FIPS defaults to off.
+
 
 ## ChefSpec Matchers
 
