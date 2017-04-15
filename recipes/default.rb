@@ -38,7 +38,7 @@ user 'stunnel4' do
   home '/var/run/stunnel4'
   system true
   shell '/bin/false'
-  supports manage_home: true
+  manage_home true
   not_if { node['platform_family'] == 'debian' }
 end
 
