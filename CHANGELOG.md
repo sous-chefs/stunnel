@@ -1,20 +1,26 @@
 # Change Log
 
-## [v2.3.0](https://github.com/aetrion/chef-stunnel/tree/HEAD)
+## [2.5.0](https://github.com/aetrion/chef-stunnel/tree/2.5.0) (2017-06-05)
+[Full Changelog](https://github.com/aetrion/chef-stunnel/compare/v2.3.0...2.5.0)
 
+**Merged pull requests:**
 
-[Full Changelog](https://github.com/aetrion/chef-stunnel/compare/v2.2.0...HEAD)
+- Remove 'supports { manage\_home: true }' [\#39](https://github.com/aetrion/chef-stunnel/pull/39) ([RavWar](https://github.com/RavWar))
+- Add FIPS configuration option [\#37](https://github.com/aetrion/chef-stunnel/pull/37) ([mitch-roblox](https://github.com/mitch-roblox))
+
+## [v2.3.0](https://github.com/aetrion/chef-stunnel/tree/v2.3.0) (2016-11-23)
+[Full Changelog](https://github.com/aetrion/chef-stunnel/compare/v2.2.0...v2.3.0)
+
+**Merged pull requests:**
+
+- Add a ulimit setting, added to init script if not nil [\#36](https://github.com/aetrion/chef-stunnel/pull/36) ([onlyhavecans](https://github.com/onlyhavecans))
+
+## [v2.2.0](https://github.com/aetrion/chef-stunnel/tree/v2.2.0) (2016-11-15)
+[Full Changelog](https://github.com/aetrion/chef-stunnel/compare/v2.1.0...v2.2.0)
 
 **Implemented enhancements:**
 
-- Setting limits on the number of open files which stunnel depends on via init script.
-
-## [v2.2.0](https://github.com/aetrion/chef-stunnel/tree/v2.2.0)
-
-[Full Changelog](https://github.com/aetrion/chef-stunnel/compare/v2.1.0...HEAD)
-
-**Implemented enhancements:**
-
+- Lower the precedence of services node attributes [\#31](https://github.com/aetrion/chef-stunnel/pull/31) ([martinisoft](https://github.com/martinisoft))
 - Expose SSL ciphers option [\#23](https://github.com/aetrion/chef-stunnel/pull/23) ([thoutenbos](https://github.com/thoutenbos))
 - Source install [\#22](https://github.com/aetrion/chef-stunnel/pull/22) ([thoutenbos](https://github.com/thoutenbos))
 
@@ -24,10 +30,10 @@
 
 **Merged pull requests:**
 
+- Replacing restart on the configuration for reload  [\#35](https://github.com/aetrion/chef-stunnel/pull/35) ([therobot](https://github.com/therobot))
 - Modernize cookbook [\#30](https://github.com/aetrion/chef-stunnel/pull/30) ([martinisoft](https://github.com/martinisoft))
 - Add basic ChefSpec matchers [\#20](https://github.com/aetrion/chef-stunnel/pull/20) ([jeffbyrnes](https://github.com/jeffbyrnes))
 - Feature/log warnings [\#9](https://github.com/aetrion/chef-stunnel/pull/9) ([dje](https://github.com/dje))
-- Replace restart for reload on a configuration change [\35](https://github.com/aetrion/chef-stunnel/pull/35) ([therobot](https://github.com/therobot))
 
 ## [v2.1.0](https://github.com/aetrion/chef-stunnel/tree/v2.1.0) (2014-04-11)
 [Full Changelog](https://github.com/aetrion/chef-stunnel/compare/v2.0.4...v2.1.0)
