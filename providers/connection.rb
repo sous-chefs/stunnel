@@ -34,7 +34,8 @@ action :create do
     cert: new_resource.cert,
     verify: new_resource.verify,
     timeout_close: new_resource.timeout_close,
-    client: new_resource.client
+    client: new_resource.client,
+    protocol: new_resource.protocol
   )
   exist = Mash.new(node['stunnel']['services'][new_resource.service_name])
   if(exist != hsh)
