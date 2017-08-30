@@ -85,7 +85,7 @@ TIMEOUTclose = 0
 
 <% node['stunnel']['services'].each do |name, opts| -%>
 [<%= name %>]
-<% %w[connect accept cert verify].each do |opt| -%>
+<% %w[connect accept key cert verify].each do |opt| -%>
 <% unless opts[opt].nil? -%>
 <%= opt %> = <%= opts[opt] %>
 <% end -%>
@@ -98,5 +98,8 @@ TIMEOUTclose = <%= opts['timeout_close'] ? 1 : 0 %>
 <% end -%>
 <% unless opts['client'].nil? -%>
 client = <%= opts['client'] ? "yes" : "no" %>
+<% end -%>
+<% unless opts['verify_chain'].nil? -%>
+verifyChain = <%= opts['verify_chain'] ? 'yes' : 'no' %>
 <% end -%>
 <% end -%>

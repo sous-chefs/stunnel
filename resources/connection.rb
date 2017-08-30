@@ -24,7 +24,9 @@ property :connect, required: true
 property :accept, required: true
 property :cafile, String
 property :cert, String
+property :key, String
 property :verify, Integer
+property :verify_chain, [true, false]
 property :timeout_close, [true, false]
 property :client, [true, false]
 
@@ -34,7 +36,9 @@ action :create do
     accept: new_resource.accept,
     cafile: new_resource.cafile,
     cert: new_resource.cert,
+    key: new_resource.key,
     verify: new_resource.verify,
+    verify_chain: new_resource.verify_chain,
     timeout_close: new_resource.timeout_close,
     client: new_resource.client
   )
