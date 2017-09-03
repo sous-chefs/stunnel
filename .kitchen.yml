@@ -18,18 +18,18 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[test_stunnel::default]
+      - recipe[test::default]
   - name: ulimit
     run_list:
-      - recipe[test_stunnel::default]
+      - recipe[test::default]
     attributes:
       stunnel:
         ulimit: 8192
   - name: certificates
     run_list:
-      - recipe[test_stunnel::certificates]
+      - recipe[test::certificates]
   - name: source
     run_list:
-      - recipe[test_stunnel::default]
+      - recipe[test::default]
     attributes:
       install_method: 'source'

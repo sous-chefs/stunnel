@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: test_stunnel
-# Recipe:: certificates
+# Recipe:: default
 #
 # Copyright 2013, Heavy Water Operations, LLC
 #
@@ -18,49 +18,17 @@
 #
 
 include_recipe 'stunnel::server'
-include_recipe 'nginx'
-
-certificates = data_bag_item('stunnel', 'certificates')
-
-cert_dir = '/etc/stunnel/certificates'
-directory cert_dir do
-  recursive true
-  owner 'root'
-  group 'root'
-  mode 0755
-end
-
-ca_pem = File.join(cert_dir, 'ca.pem')
-file ca_pem do
-  content certificates['ca']
-  owner 'root'
-  group 'root'
-  mode 0700
-end
-
-cert_pem = File.join(cert_dir, 'cert.pem')
-file cert_pem do
-  content certificates['cert']
-  owner 'root'
-  group 'root'
-  mode 0700
-end
+include_recipe 'chef_nginx'
 
 stunnel_connection 'server' do
   accept 8080
   connect 80
-  cafile ca_pem
-  cert cert_pem
-  verify 2
   notifies :restart, 'service[stunnel]'
 end
 
 stunnel_connection 'client' do
   accept 9090
   connect 'localhost:8080'
-  cafile ca_pem
-  cert cert_pem
-  verify 2
   client true
   notifies :restart, 'service[stunnel]'
 end
