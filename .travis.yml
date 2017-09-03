@@ -12,8 +12,6 @@ addons:
 env:
   global:
   - KITCHEN_LOCAL_YAML=.kitchen.dokken.yml
-
-env:
   matrix:
   - KITCHEN_REGEXP=default
   - KITCHEN_REGEXP=certificates
