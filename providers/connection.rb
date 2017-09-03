@@ -21,9 +21,7 @@ use_inline_resources
 
 def load_current_resource
   node['stunnel']['services'] ||= {}
-  unless(new_resource.service_name)
-    new_resource.service_name new_resource.name
-  end
+  new_resource.service_name new_resource.name unless new_resource.service_name
 end
 
 action :create do
@@ -37,7 +35,7 @@ action :create do
     client: new_resource.client
   )
   exist = Mash.new(node['stunnel']['services'][new_resource.service_name])
-  if(exist != hsh)
+  if exist != hsh
     node.default['stunnel']['services'][new_resource.service_name] = hsh
     new_resource.updated_by_last_action(true)
   end
@@ -45,7 +43,7 @@ end
 
 action :delete do
   serv_data = Mash.new(node['stunnel']['services'])
-  if(serv_data.delete(new_resource.service_name))
+  if serv_data.delete(new_resource.service_name)
     node.default['stunnel']['services'] = serv_data
     new_resource.updated_by_last_action(true)
   end
