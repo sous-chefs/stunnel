@@ -37,7 +37,7 @@ action :create do
   exist = Mash.new(node['stunnel']['services'][new_resource.service_name])
   if exist != hsh
     node.default['stunnel']['services'][new_resource.service_name] = hsh
-    new_resource.updated_by_last_action(true)
+    new_resource.updated_by_last_action(true) # ~FC085
   end
 end
 
@@ -45,6 +45,7 @@ action :delete do
   serv_data = Mash.new(node['stunnel']['services'])
   if serv_data.delete(new_resource.service_name)
     node.default['stunnel']['services'] = serv_data
-    new_resource.updated_by_last_action(true)
+    new_resource.updated_by_last_action(true) # ~FC085
+
   end
 end
