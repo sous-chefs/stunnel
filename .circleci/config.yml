@@ -1,0 +1,31 @@
+version: 2
+jobs:
+  build:
+    machine: true
+    parallelism: 2
+    environment:
+      KITCHEN_LOCAL_YAML: .kitchen.dokken.yml
+    dependencies:
+      pre:
+        - curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -c stable -P chefdk
+    docker:
+      - image: circleci/ruby:2.4
+    steps:
+      - checkout
+      - run:
+          name: load chefdk
+          command: |
+            eval "$(/opt/chefdk/bin/chef shell-init bash)"
+      - run:
+          name: gem installs
+          command: |
+            chef gem install kitchen-dokken
+            chef gem install stove
+      - run:
+          name: lint and unit
+          command: |
+            chef exec delivery local all
+      - run:
+          name: test
+          command: |
+            kitchen test default
