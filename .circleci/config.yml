@@ -28,4 +28,4 @@ jobs:
       - run:
           name: test
           command: |
-            kitchen test default
+            kitchen test default-ubuntu-1404
