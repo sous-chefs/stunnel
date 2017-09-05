@@ -1,10 +1,7 @@
 version: 2
 jobs:
   build:
-    machine: true
     parallelism: 2
-    environment:
-      KITCHEN_LOCAL_YAML: .kitchen.dokken.yml
     dependencies:
       pre:
         - curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -c stable -P chefdk
@@ -27,5 +24,7 @@ jobs:
             chef exec delivery local all
       - run:
           name: test
+          environment:
+            KITCHEN_LOCAL_YAML: .kitchen.dokken.yml
           command: |
             kitchen test default-ubuntu-1404
