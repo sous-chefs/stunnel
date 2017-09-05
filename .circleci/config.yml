@@ -2,11 +2,8 @@ version: 2
 jobs:
   build:
     parallelism: 2
-    dependencies:
-      pre:
-        - curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -c stable -P chefdk
     docker:
-      - image: circleci/ruby:2.4
+      - image: chef/chefdk:2.1.11
     steps:
       - checkout
       - run:
