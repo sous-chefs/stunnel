@@ -21,12 +21,10 @@ install: echo "skip bundle install"
 
 before_install:
   - sudo apt-get update
-  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
 
 before_script:
   - eval "$(/opt/chefdk/bin/chef shell-init bash)"
   - chef gem install kitchen-dokken
-  - chef gem install stove
 
 script:
   - chef exec delivery local all
