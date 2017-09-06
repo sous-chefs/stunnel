@@ -2,7 +2,7 @@
 # Cookbook Name:: stunnel
 # Resources:: connection
 #
-# Copyright 2016 Aetrion, LLC
+# Copyright 2016-2017 Aetrion, LLC dba DNSimple
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,14 +17,40 @@
 # limitations under the License.
 #
 
-actions :create, :delete
 default_action :create
 
-attribute :service_name, kind_of: String
-attribute :connect, required: true
-attribute :accept, required: true
-attribute :cafile, kind_of: String
-attribute :cert, kind_of: String
-attribute :verify, kind_of: Integer
-attribute :timeout_close, kind_of: [TrueClass,FalseClass]
-attribute :client, kind_of: [TrueClass,FalseClass]
+property :service_name, String, name_property: true
+property :connect, required: true
+property :accept, required: true
+property :cafile, String
+property :cert, String
+property :verify, Integer
+property :timeout_close, [true, false]
+property :client, [true, false]
+
+action :create do
+  hsh = Mash.new(
+    connect: new_resource.connect,
+    accept: new_resource.accept,
+    cafile: new_resource.cafile,
+    cert: new_resource.cert,
+    verify: new_resource.verify,
+    timeout_close: new_resource.timeout_close,
+    client: new_resource.client
+  )
+  exist = Mash.new(node['stunnel']['services'][new_resource.service_name])
+  if exist != hsh
+    converge_by 'update_services' do
+      node.default['stunnel']['services'][new_resource.service_name] = hsh
+    end
+  end
+end
+
+action :delete do
+  serv_data = Mash.new(node['stunnel']['services'])
+  if serv_data.delete(new_resource.service_name)
+    converge_by 'update_services' do
+      node.default['stunnel']['services'] = serv_data
+    end
+  end
+end

@@ -1,8 +1,17 @@
 # stunnel
 
-[![Build Status](https://travis-ci.org/aetrion/chef-stunnel.svg?branch=master)](https://travis-ci.org/aetrion/chef-stunnel)
+[![Build Status](https://travis-ci.org/dnsimple/chef-stunnel.svg?branch=master)](https://travis-ci.org/dnsimple/chef-stunnel)
 
 Chef cookbook to install and configure stunnel
+
+## Requirements
+
+* Chef 12.6+
+
+## Platform Support
+
+* Ubuntu 14.04+
+* CentOS 6.9+
 
 ## Resources
 
@@ -123,18 +132,15 @@ end
 
 ## Testing Locally
 
-To run the tests, make sure you've got the latest [ChefDK][] along with
-[Vagrant][] then you can run `chef exec kitchen test` which will run the
+To run the tests, make sure you've got the latest [ChefDK](https://downloads.chef.io/chef-dk/) along with
+[Vagrant](https://www.vagrantup.com/downloads.html) then you can run `chef exec kitchen test` which will run the
 entire test suite on all platforms.
-
-If you want to speed things up, install the [vagrant-cachier][] gem by doing
-the following: `vagrant plugin install vagrant-cachier`
 
 ## License and Authors
 
 * Author:: [Aaron Kalin](https://github.com/martinisoft)
 
-Copyright:: 2016 Aetrion, LLC
+Copyright:: 2016-2017 Aetrion, LLC dba DNSimple
 
 ```
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -149,7 +155,3 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
-
-[ChefDK]: https://downloads.chef.io/chef-dk/
-[Vagrant]: https://www.vagrantup.com/downloads.html
-[vagrant-cachier]: https://github.com/fgrehm/vagrant-cachier

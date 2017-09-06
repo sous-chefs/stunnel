@@ -1,34 +1,50 @@
 ---
 driver:
   name: vagrant
+  require_chef_omnibus: 12
 
 provisioner:
   name: chef_zero
 
+verifier:
+  name: inspec
+
 platforms:
-  - name: ubuntu-12.04
-    run_list:
-      - recipe[apt]
   - name: ubuntu-14.04
     run_list:
       - recipe[apt]
-  - name: centos-6.7
+  - name: ubuntu-16.04
+    run_list:
+      - recipe[apt]
+  - name: centos-6
 
 suites:
   - name: default
     run_list:
-      - recipe[test_stunnel::default]
+      - recipe[test::default]
+    verifier:
+      inspec_tests:
+        - test/smoke/default
   - name: ulimit
     run_list:
-      - recipe[test_stunnel::default]
+      - recipe[test::default]
+    verifier:
+      inspec_tests:
+        - test/smoke/ulimit
     attributes:
       stunnel:
         ulimit: 8192
   - name: certificates
     run_list:
-      - recipe[test_stunnel::certificates]
+      - recipe[test::certificates]
+    verifier:
+      inspec_tests:
+        - test/smoke/certificates
   - name: source
     run_list:
-      - recipe[test_stunnel::default]
+      - recipe[test::default]
+    verifier:
+      inspec_tests:
+        - test/smoke/source
     attributes:
       install_method: 'source'
