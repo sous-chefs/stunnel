@@ -6,7 +6,7 @@ description      'Provides resources to help install and configure stunnel'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 source_url       'https://github.com/aetrion/chef-stunnel'
 issues_url       'https://github.com/aetrion/chef-stunnel/issues'
-version          '2.5.0'
+version          '3.0.0'
 
 chef_version '>= 12.6' if respond_to?(:chef_version)
 supports 'ubuntu'
