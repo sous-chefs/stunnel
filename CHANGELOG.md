@@ -1,5 +1,13 @@
 # Change Log
 
+## [v3.1.0](https://github.com/dnsimple/chef-stunnel/tree/v3.1.0) (2017-11-08)
+[Full Changelog](https://github.com/dnsimple/chef-stunnel/compare/v3.0.0...v3.1.0)
+
+**Merged pull requests:**
+
+- Testing to chef 13 [\#42](https://github.com/dnsimple/chef-stunnel/pull/42) ([onlyhavecans](https://github.com/onlyhavecans))
+- Add key and verifyChain connection options [\#40](https://github.com/dnsimple/chef-stunnel/pull/40) ([mitch-roblox](https://github.com/mitch-roblox))
+
 ## [v3.0.0](https://github.com/dnsimple/chef-stunnel/tree/v3.0.0) (2017-09-06)
 [Full Changelog](https://github.com/dnsimple/chef-stunnel/compare/v2.3.0...v3.0.0)
 
