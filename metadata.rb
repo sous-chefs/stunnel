@@ -1,5 +1,5 @@
 name             'stunnel'
-maintainer       'Aetrion, LLC dba DNSimple'
+maintainer       'DNSimple Corp'
 maintainer_email 'ops@dnsimple.com'
 license          'Apache-2.0'
 description      'Provides resources to help install and configure stunnel'
