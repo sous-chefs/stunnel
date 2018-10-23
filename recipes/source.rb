@@ -28,4 +28,3 @@ end
 link '/usr/bin/stunnel' do
   to '/usr/local/bin/stunnel'
 end
-
