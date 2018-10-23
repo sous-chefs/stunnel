@@ -1,5 +1,13 @@
 # Change Log
 
+## [v3.1.1](https://github.com/dnsimple/chef-stunnel/tree/v3.1.1) (2018-10-22)
+[Full Changelog](https://github.com/dnsimple/chef-stunnel/compare/v3.1.0...v3.1.1)
+
+**Merged pull requests:**
+
+- Add in deprecation warnings for Chef 12 removal [\#44](https://github.com/dnsimple/chef-stunnel/pull/44) ([martinisoft](https://github.com/martinisoft))
+- Update Copyright [\#43](https://github.com/dnsimple/chef-stunnel/pull/43) ([onlyhavecans](https://github.com/onlyhavecans))
+
 ## [v3.1.0](https://github.com/dnsimple/chef-stunnel/tree/v3.1.0) (2017-11-08)
 [Full Changelog](https://github.com/dnsimple/chef-stunnel/compare/v3.0.0...v3.1.0)
 
