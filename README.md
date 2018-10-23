@@ -4,6 +4,10 @@
 
 Chef cookbook to install and configure stunnel
 
+## DEPRECATION WARNING
+
+This is the final release to support Chef 12 which is End of Life as of April 2018. If you still need Chef 12 support, please version pin a 3.x release to prevent possible issues. To migrate, please see the README with migration instructions.
+
 ## Requirements
 
 * Chef 12.6+
