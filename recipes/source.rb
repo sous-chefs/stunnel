@@ -3,7 +3,7 @@ log 'deprecation warning' do
   level :warn
 end
 
-include_recipe 'build-essential'
+build_essential 'stunnel requirement'
 
 package node['stunnel']['ssl_devel']
 
