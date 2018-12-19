@@ -1,5 +1,13 @@
 # Change Log
 
+## [Unreleased](https://github.com/sous-chefs/chef-stunnel/tree/HEAD)
+
+[Full Changelog](https://github.com/sous-chefs/chef-stunnel/compare/v3.1.1...HEAD)
+
+**Merged pull requests:**
+
+- Add CircleCI testing [\#46](https://github.com/sous-chefs/chef-stunnel/pull/46) ([damacus](https://github.com/damacus))
+
 ## [v3.1.1](https://github.com/sous-chefs/chef-stunnel/tree/v3.1.1) (2018-10-23)
 [Full Changelog](https://github.com/sous-chefs/chef-stunnel/compare/v3.1.0...v3.1.1)
 

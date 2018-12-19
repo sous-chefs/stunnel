@@ -1,16 +1,12 @@
 # stunnel
 
-[![Build Status](https://travis-ci.org/dnsimple/chef-stunnel.svg?branch=master)](https://travis-ci.org/dnsimple/chef-stunnel)
+[![CircleCI](https://circleci.com/gh/sous-chefs/chef-stunnel/tree/master.svg?style=svg)](https://circleci.com/gh/sous-chefs/chef-stunnel/tree/master)
 
 Chef cookbook to install and configure stunnel
 
-## DEPRECATION WARNING
-
-This is the final release to support Chef 12 which is End of Life as of April 2018. If you still need Chef 12 support, please version pin a 3.x release to prevent possible issues. To migrate, please see the README with migration instructions.
-
 ## Requirements
 
-* Chef 12.6+
+* Chef 13
 
 ## Platform Support
 
@@ -20,6 +16,7 @@ This is the final release to support Chef 12 which is End of Life as of April 20
 ## Resources
 
 An `stunnel_connection` resource is provided for defining stunnel connections. As a client:
+
 ```ruby
 include_recipe 'stunnel'
 
@@ -31,6 +28,7 @@ end
 ```
 
 As a server:
+
 ```ruby
 include_recipe 'stunnel::server'
 
@@ -87,9 +85,8 @@ default['stunnel']['default']['options'] = ''
 FIPS mode can be enabled or disabled with the attribute `['stunnel']['fips']`. A value of nil will omit the
 "fips" setting from the config file altogether, falling back to the default behavior for that version of stunnel:
 
-- For 4.x releases FIPS defaults to on if stunnel was compiled with FIPS support.
-- For 5.x releases FIPS defaults to off.
-
+* For 4.x releases FIPS defaults to on if stunnel was compiled with FIPS support.
+* For 5.x releases FIPS defaults to off.
 
 ## ChefSpec Matchers
 
