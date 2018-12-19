@@ -9,7 +9,9 @@ key = <%= node['stunnel']['key_path'] %>
 ; protocol version (all, SSLv2, SSLv3, TLSv1)
 ; sslVersion = SSLv3 - intenet explorer does not work with only SSLv3
 sslVersion = <%= node['stunnel']['ssl_version'] %>
+<% if node['stunnel']['ssl_options'] %>
 options = <%= node['stunnel']['ssl_options'] %>
+<% end -%>
 
 <% if node['stunnel']['ciphers'] -%>
 ciphers = <%= node['stunnel']['ciphers'] %>
