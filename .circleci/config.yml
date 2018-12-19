@@ -15,19 +15,19 @@ workflows:
           name: source-18
           suite: source-18
           requires: [danger, lint]
-      - kitchen/danger:
+      - kitchen/dokken:
           name: default
           suite: default
           requires: [danger,lint]
-      - kitchen/danger:
+      - kitchen/dokken:
           name: ulimit
           suite: ulimit
           requires: [danger,lint]
-      - kitchen/danger:
+      - kitchen/dokken:
           name: certificates
           suite: certificates
           requires: [danger,lint]
-      - kitchen/danger:
+      - kitchen/dokken:
           name: source
           suite: source
           requires: [danger,lint]
