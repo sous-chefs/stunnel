@@ -68,3 +68,7 @@ default['stunnel']['default']['files'] = '/etc/stunnel/*.conf'
 default['stunnel']['default']['options'] = ''
 
 default['stunnel']['services'] = {}
+
+# certificate/key is needed in server mode and optional in client mode
+default['stunnel']['certificate_path'] = nil # /etc/pki/stunnel/cert.pem
+default['stunnel']['key_path'] = nil # /etc/pki/stunnel/key.pem
