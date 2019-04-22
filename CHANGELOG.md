@@ -8,6 +8,7 @@
 
 - Add CircleCI testing [\#46](https://github.com/sous-chefs/chef-stunnel/pull/46) ([damacus](https://github.com/damacus))
 * Add docs for stunnel cert / key path attributes [\#29](https://github.com/sous-chefs/chef-stunnel/pull/29) ([jhmartin](https://github.com/jhmartin))
+* Adds the protocol option when creating a STunnel server [\#25](https://github.com/sous-chefs/chef-stunnel/pull/25) ([maraca](https://github.com/maraca))
 
 ## [v3.1.1](https://github.com/sous-chefs/chef-stunnel/tree/v3.1.1) (2018-10-23)
 [Full Changelog](https://github.com/sous-chefs/chef-stunnel/compare/v3.1.0...v3.1.1)
