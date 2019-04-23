@@ -30,6 +30,7 @@ property :verify_chain, [true, false]
 property :timeout_close, [true, false]
 property :client, [true, false]
 property :protocol, String
+property :options, Hash
 
 action :create do
   hsh = Mash.new(
@@ -43,6 +44,7 @@ action :create do
     timeout_close: new_resource.timeout_close,
     client: new_resource.client,
     protocol: new_resource.protocol
+    options: new_resource.options
   )
   exist = Mash.new(node['stunnel']['services'][new_resource.service_name])
   if exist != hsh
