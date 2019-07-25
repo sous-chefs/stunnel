@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: test_stunnel
+# Cookbook:: test_stunnel
 # Recipe:: certificates
 #
-# Copyright 2013, Heavy Water Operations, LLC
+# Copyright:: 2013, Heavy Water Operations, LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ directory cert_dir do
   recursive true
   owner 'root'
   group 'root'
-  mode 0755
+  mode '755'
 end
 
 ca_pem = File.join(cert_dir, 'ca.pem')
@@ -35,7 +35,7 @@ file ca_pem do
   content certificates['ca']
   owner 'root'
   group 'root'
-  mode 0700
+  mode '700'
 end
 
 cert_pem = File.join(cert_dir, 'cert.pem')
@@ -43,7 +43,7 @@ file cert_pem do
   content certificates['cert']
   owner 'root'
   group 'root'
-  mode 0700
+  mode '700'
 end
 
 stunnel_connection 'server' do

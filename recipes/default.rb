@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: stunnel
+# Cookbook:: stunnel
 # Recipes:: default
 #
-# Copyright 2016-2018 DNSimple Corp
+# Copyright:: 2016-2018 DNSimple Corp
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -46,7 +46,7 @@ end
 
 template '/etc/init.d/stunnel4' do
   source 'init-stunnel4.erb'
-  mode 0755
+  mode '755'
   variables(
     ulimit: node['stunnel']['ulimit'],
     daemon: node['stunnel']['daemon']
@@ -62,14 +62,14 @@ end
 
 template '/etc/stunnel/stunnel.conf' do
   source 'stunnel.conf.erb'
-  mode 0644
+  mode '644'
   action :nothing
   notifies :reload, 'service[stunnel]', :delayed
 end
 
 template '/etc/default/stunnel4' do
   source 'stunnel.default.erb'
-  mode 0644
+  mode '644'
 end
 
 service 'stunnel' do
