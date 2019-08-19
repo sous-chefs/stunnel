@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: stunnel
+# Cookbook:: stunnel
 # Recipes:: server
 #
-# Copyright 2016-2018 DNSimple Corp
+# Copyright:: 2016-2018 DNSimple Corp
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ execute 'Create stunnel SSL Certificates' do
 end
 
 file '/etc/stunnel/stunnel.pem' do
-  mode 0600
+  mode '600'
 end
 
 node.default['stunnel']['certificate_path'] = '/etc/stunnel/stunnel.pem'

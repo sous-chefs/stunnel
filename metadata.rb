@@ -12,5 +12,3 @@ supports 'ubuntu'
 supports 'centos'
 supports 'fedora'
 supports 'suse'
-
-depends 'build-essential'
