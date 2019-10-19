@@ -20,7 +20,7 @@
 include_recipe 'stunnel::server'
 
 nginx_install 'default' do
-    source 'repo'
+  source 'repo'
 end
 
 certificates = data_bag_item('stunnel', 'certificates')

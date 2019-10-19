@@ -23,7 +23,6 @@ nginx_install 'default' do
   source 'repo'
 end
 
-
 stunnel_connection 'server' do
   accept 8080
   connect 80
