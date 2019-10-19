@@ -41,7 +41,7 @@ user 'stunnel4' do
   system true
   shell '/bin/false'
   manage_home true
-  not_if { node['platform_family'] == 'debian' }
+  not_if { platform_family?('debian') }
 end
 
 template '/etc/init.d/stunnel4' do

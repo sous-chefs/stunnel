@@ -17,20 +17,14 @@ verifier:
   name: inspec
 
 platforms:
-- name: amazon-linux
-  driver_config:
-    box: mvbcoding/awslinux
-- name: amazon-linux-2
-  driver_config:
-    box: ywatase/amzn2
-- name: centos-6
-- name: centos-7
-- name: debian-8
-- name: debian-9
-- name: fedora-latest
-- name: opensuse-leap-15
-- name: ubuntu-16.04
-- name: ubuntu-18.04
+  - name: amazon-linux
+  - name: amazon-linux-2
+  - name: centos-6
+  - name: centos-7
+  - name: debian-8
+  - name: debian-9
+  - name: ubuntu-16.04
+  - name: ubuntu-18.04
 
 suites:
   - name: default
