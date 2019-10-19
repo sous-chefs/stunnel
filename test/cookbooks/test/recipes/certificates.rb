@@ -18,7 +18,10 @@
 #
 
 include_recipe 'stunnel::server'
-include_recipe 'chef_nginx'
+
+nginx_install 'default' do
+    source 'repo'
+end
 
 certificates = data_bag_item('stunnel', 'certificates')
 
