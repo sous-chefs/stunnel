@@ -20,8 +20,8 @@ workflows:
       - kitchen/delivery:
           name: delivery
       - kitchen/dokken-single:
-          name: default-amazon-linux-2
-          suite: default-amazon-linux-2
+          name: default-amazonlinux-2
+          suite: default-amazonlinux-2
           requires: *lint_and_unit
       - kitchen/dokken-single:
           name: default-centos-6
@@ -48,8 +48,8 @@ workflows:
           suite: default-ubuntu-1804
           requires: *lint_and_unit
       - kitchen/dokken-single:
-          name: ulimit-amazon-linux-2
-          suite: ulimit-amazon-linux-2
+          name: ulimit-amazonlinux-2
+          suite: ulimit-amazonlinux-2
           requires: *lint_and_unit
       - kitchen/dokken-single:
           name: ulimit-centos-6
@@ -76,8 +76,8 @@ workflows:
           suite: ulimit-ubuntu-1804
           requires: *lint_and_unit
       - kitchen/dokken-single:
-          name: certificates-amazon-linux-2
-          suite: certificates-amazon-linux-2
+          name: certificates-amazonlinux-2
+          suite: certificates-amazonlinux-2
           requires: *lint_and_unit
       - kitchen/dokken-single:
           name: certificates-centos-6
@@ -104,8 +104,8 @@ workflows:
           suite: certificates-ubuntu-1804
           requires: *lint_and_unit
       - kitchen/dokken-single:
-          name: source-amazon-linux-2
-          suite: source-amazon-linux-2
+          name: source-amazonlinux-2
+          suite: source-amazonlinux-2
           requires: *lint_and_unit
       - kitchen/dokken-single:
           name: source-centos-6
