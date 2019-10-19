@@ -1,4 +1,4 @@
-## Testing
+# Testing
 
 To run the tests across all platforms, you want to grab the latest [ChefDK][]
 install [VirtualBox][], [Vagrant][]

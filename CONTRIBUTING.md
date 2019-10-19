@@ -13,16 +13,16 @@ When submitting an issue, please check the Issues section of this repository on 
 ## Contribution process
 
 1. Fork the repository to your own account if you have not yet done do already.
-2. Commit changes to a git branch that is named after the changes you wish to contribute.
-3. Create a GitHub Pull Request for your change, following the [Pull Request Requirements](#pull-request-requirements)
-4. Perform a [Code Review](#code-review-process) with the cookbook maintainers on the pull request.
+1. Commit changes to a git branch that is named after the changes you wish to contribute.
+1. Create a GitHub Pull Request for your change, following the [Pull Request Requirements](#pull-request-requirements)
+1. Perform a [Code Review](#code-review-process) with the cookbook maintainers on the pull request.
 
 ### Pull Request Requirements
 
 In order to maintain a high standard of compatibility and consistency for the consumers of our cookbook we like to make sure all pull requests meet the following criteria:
 
 1. **Tests:** To ensure high quality code and protect against regressions in the future we require all changes have ample test coverage. This does not mean 100% coverage or even specific types of coverage. See the TESTING.md file for details on how to run the test suite.
-2. **Passing Continuous Integration (CI):** Speaking of tests, the contributed code must pass our full suite of tests on [CircleCI](http://circleci.com) and show a green indicator meaning the latest build passes. If for some reason the build is failing before your pull request please raise the issue in the pull request so we may address it.
+1. **Passing Continuous Integration (CI):** Speaking of tests, the contributed code must pass our full suite of tests on [CircleCI](http://circleci.com) and show a green indicator meaning the latest build passes. If for some reason the build is failing before your pull request please raise the issue in the pull request so we may address it.
 
 ### Code Review Process
 
@@ -31,7 +31,7 @@ Code review takes place in GitHub pull requests. See [this article](https://help
 Once you open a pull request, cookbook maintainers will review your code using the built-in code review process in Github PRs. The process at this point is as follows:
 
 1. A cookbook maintainer will review your code and merge it if no changes are necessary. Your change will be merged into the cookbooks's `master` branch and will be noted in the cookbook's `CHANGELOG.md` at the time of release.
-2. If a maintainer has feedback or questions on your changes they they will set `request changes` in the review and provide an explanation.
+1. If a maintainer has feedback or questions on your changes they they will set `request changes` in the review and provide an explanation.
 
 ## Contribution Guidelines
 
