@@ -8,6 +8,8 @@
 - Add docs for stunnel cert / key path attributes [\#29](https://github.com/sous-chefs/chef-stunnel/pull/29) ([jhmartin](https://github.com/jhmartin))
 - Adds the protocol option when creating a STunnel server [\#25](https://github.com/sous-chefs/chef-stunnel/pull/25) ([maraca](https://github.com/maraca))
 - Support arbitrary options for tunnels [\#24](https://github.com/sous-chefs/chef-stunnel/pull/24) ([ssevertson](https://github.com/ssevertson))
+- Resolved: ChefStyle/UnnecessaryPlatformCaseStatement
+- Migrated to Github Actions for testing
 
 ## [v3.1.1](https://github.com/sous-chefs/chef-stunnel/tree/v3.1.1) (2018-10-23)
 
