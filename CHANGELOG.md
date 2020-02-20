@@ -1,17 +1,24 @@
 # Change Log
 
-## [v4.0.0](https://github.com/sous-chefs/chef-stunnel/tree/v4.0.0) (2020-02-20)
+## [v4.1.0](https://github.com/sous-chefs/chef-stunnel/tree/v4.1.0) (2020-02-20)
+
+[Full Changelog](https://github.com/sous-chefs/chef-stunnel/compare/v4.0.0...v4.1.0)
+
+### Add
+
+- Add docs for stunnel cert / key path attributes [\#29](https://github.com/sous-chefs/chef-stunnel/pull/29) ([jhmartin](https://github.com/jhmartin))
+- Adds the protocol option when creating a STunnel server [\#25](https://github.com/sous-chefs/chef-stunnel/pull/25) ([maraca](https://github.com/maraca))
+- Support arbitrary options for tunnels [\#24](https://github.com/sous-chefs/chef-stunnel/pull/24) ([ssevertson](https://github.com/ssevertson))
+- Resolved: ChefStyle/UnnecessaryPlatformCaseStatement cookstyle warning
+- Migrated to Github Actions for testing
+
+## [v4.0.0](https://github.com/sous-chefs/chef-stunnel/tree/v4.0.0)
 
 [Full Changelog](https://github.com/sous-chefs/chef-stunnel/compare/v3.1.1...v4.0.0)
 
 ### Add
 
 - Add CircleCI testing [\#46](https://github.com/sous-chefs/chef-stunnel/pull/46) ([damacus](https://github.com/damacus))
-- Add docs for stunnel cert / key path attributes [\#29](https://github.com/sous-chefs/chef-stunnel/pull/29) ([jhmartin](https://github.com/jhmartin))
-- Adds the protocol option when creating a STunnel server [\#25](https://github.com/sous-chefs/chef-stunnel/pull/25) ([maraca](https://github.com/maraca))
-- Support arbitrary options for tunnels [\#24](https://github.com/sous-chefs/chef-stunnel/pull/24) ([ssevertson](https://github.com/ssevertson))
-- Resolved: ChefStyle/UnnecessaryPlatformCaseStatement cookstyle warning
-- Migrated to Github Actions for testing
 
 ## [v3.1.1](https://github.com/sous-chefs/chef-stunnel/tree/v3.1.1) (2018-10-23)
 
