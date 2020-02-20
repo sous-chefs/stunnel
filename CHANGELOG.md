@@ -1,6 +1,8 @@
 # Change Log
 
-## [Unreleased]
+## [v4.0.0](https://github.com/sous-chefs/chef-stunnel/tree/v4.0.0) (2020-02-20)
+
+[Full Changelog](https://github.com/sous-chefs/chef-stunnel/compare/v3.1.1...v4.0.0)
 
 ### Add
 
