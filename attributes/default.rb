@@ -17,8 +17,7 @@
 # limitations under the License.
 #
 
-case node['platform_family']
-when 'debian'
+if platform_family?('debian')
   default['stunnel']['packages'] = %w(stunnel4)
   default['stunnel']['daemon'] = 'stunnel4'
   default['stunnel']['ssl-devel'] = 'libssl-dev'
