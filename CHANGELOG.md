@@ -1,5 +1,9 @@
 # Change Log
 
+## Unreleased
+
+- Standardise files with files in sous-chefs/repo-management
+
 ## [v4.1.0](https://github.com/sous-chefs/chef-stunnel/tree/v4.1.0) (2020-02-20)
 
 [Full Changelog](https://github.com/sous-chefs/chef-stunnel/compare/v4.0.0...v4.1.0)
