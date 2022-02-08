@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Remove delivery folder
+
 ## 4.1.2 - *2021-08-31*
 
 - Standardise files with files in sous-chefs/repo-management
