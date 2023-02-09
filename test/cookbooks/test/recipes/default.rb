@@ -23,6 +23,10 @@ nginx_install 'default' do
   source 'repo'
 end
 
+nginx_service 'default' do
+  action [:enable, :start]
+end
+
 stunnel_connection 'server' do
   accept 8080
   connect 80
