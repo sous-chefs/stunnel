@@ -5,6 +5,7 @@
 - Remove delivery folder
 - Fix test cookbook by updating nginx dependency & creating an nginx_service resource
 - Add unified_mode true & String type to connect & accept properties for connection resource
+- Split certs into server & client in test cookbook
 
 ## 4.1.2 - *2021-08-31*
 

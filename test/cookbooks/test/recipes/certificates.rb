@@ -43,7 +43,15 @@ end
 
 cert_pem = File.join(cert_dir, 'cert.pem')
 file cert_pem do
-  content certificates['cert']
+  content certificates['server_cert']
+  owner 'root'
+  group 'root'
+  mode '700'
+end
+
+cert_client_pem = File.join(cert_dir, 'cert-client.pem')
+file cert_client_pem do
+  content certificates['client_cert']
   owner 'root'
   group 'root'
   mode '700'
@@ -62,7 +70,7 @@ stunnel_connection 'client' do
   accept 9090
   connect 'localhost:8080'
   cafile ca_pem
-  cert cert_pem
+  cert cert_client_pem
   verify 2
   client true
   notifies :restart, 'service[stunnel]'
