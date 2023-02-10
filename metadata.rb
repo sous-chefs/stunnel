@@ -9,6 +9,7 @@ version          '4.1.2'
 chef_version     '>= 13'
 
 supports 'ubuntu'
+supports 'debian'
 supports 'centos'
 supports 'fedora'
 supports 'suse'
