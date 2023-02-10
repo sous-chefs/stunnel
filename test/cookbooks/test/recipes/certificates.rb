@@ -67,3 +67,7 @@ stunnel_connection 'client' do
   client true
   notifies :restart, 'service[stunnel]'
 end
+
+nginx_service 'default' do
+  action [:enable, :start]
+end
