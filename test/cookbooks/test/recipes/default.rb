@@ -28,13 +28,13 @@ nginx_service 'default' do
 end
 
 stunnel_connection 'server' do
-  accept '8080'
-  connect '80'
+  accept 8080
+  connect 80
   notifies :restart, 'service[stunnel]'
 end
 
 stunnel_connection 'client' do
-  accept '9090'
+  accept 9090
   connect 'localhost:8080'
   client true
   notifies :restart, 'service[stunnel]'
