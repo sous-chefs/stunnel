@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 4.1.4 - *2023-02-14*
+
+## 4.1.3 - *2023-02-14*
+
 - Remove delivery folder
 - Fix test cookbook by updating nginx dependency & creating an nginx_service resource
 - Add unified_mode true & String type to connect & accept properties for connection resource

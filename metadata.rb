@@ -5,7 +5,7 @@ license          'Apache-2.0'
 description      'Provides resources to help install and configure stunnel'
 source_url       'https://github.com/sous-chefs/chef-stunnel'
 issues_url       'https://github.com/sous-chefs/chef-stunnel/issues'
-version          '4.1.2'
+version          '4.1.4'
 chef_version     '>= 13'
 
 supports 'ubuntu'
