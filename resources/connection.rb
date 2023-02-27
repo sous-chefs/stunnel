@@ -17,11 +17,13 @@
 # limitations under the License.
 #
 
+unified_mode true
+
 default_action :create
 
 property :service_name, String, name_property: true
-property :connect, required: true
-property :accept, required: true
+property :connect, [String, Integer], required: true
+property :accept, [String, Integer], required: true
 property :cafile, String
 property :cert, String
 property :key, String

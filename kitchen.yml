@@ -19,12 +19,14 @@ verifier:
 platforms:
   - name: amazon-linux
   - name: amazon-linux-2
-  - name: centos-6
   - name: centos-7
-  - name: debian-8
+  - name: rockylinux-8
   - name: debian-9
-  - name: ubuntu-16.04
+  - name: debian-10
+  - name: debian-11
   - name: ubuntu-18.04
+  - name: ubuntu-20.04
+  - name: ubuntu-22.04
 
 suites:
   - name: default
