@@ -4,6 +4,9 @@
 
 ## 5.0.0 - *2023-02-27*
 
+- Fix metadata
+- Standardise files with repo-management
+
 ## 4.1.4 - *2023-02-14*
 
 ## 4.1.3 - *2023-02-14*

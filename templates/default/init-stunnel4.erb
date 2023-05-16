@@ -43,7 +43,7 @@ startdaemons() {
     rm -rf /var/run/stunnel4
     install -d -o stunnel4 -g stunnel4 /var/run/stunnel4
   fi
-  for file in $FILES; do 
+  for file in $FILES; do
     if test -f $file; then
       ARGS="$file $OPTIONS"
       PROCLIST=`get_pids $file`
@@ -122,7 +122,7 @@ case "$1" in
         echo -n "Reloading configuration $DESC: "
         killdaemons HUP
         echo "$NAME."
-        ;;  
+        ;;
   restart)
         echo -n "Restarting $DESC: "
         killdaemons
