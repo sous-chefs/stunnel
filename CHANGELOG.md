@@ -2,10 +2,12 @@
 
 ## Unreleased
 
-## 5.0.0 - *2023-02-27*
-
 - Fix metadata
 - Standardise files with repo-management
+
+## 5.0.1 - *2023-05-03*
+
+## 5.0.0 - *2023-02-27*
 
 ## 4.1.4 - *2023-02-14*
 
