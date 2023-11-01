@@ -9,7 +9,7 @@ name: ci
 
 jobs:
   lint-unit:
-    uses: sous-chefs/.github/.github/workflows/lint-unit.yml@2.0.6
+    uses: sous-chefs/.github/.github/workflows/lint-unit.yml@3.0.0
     permissions:
       actions: write
       checks: write
@@ -23,14 +23,14 @@ jobs:
     strategy:
       matrix:
         os:
-          - 'centos-7'
-          - 'rockylinux-8'
-          - 'debian-9'
-          - 'debian-10'
-          - 'debian-11'
-          - 'ubuntu-1804'
-          - 'ubuntu-2004'
-          - 'ubuntu-2204'
+          - "centos-7"
+          - "rockylinux-8"
+          - "debian-9"
+          - "debian-10"
+          - "debian-11"
+          - "ubuntu-1804"
+          - "ubuntu-2004"
+          - "ubuntu-2204"
         suite:
           - "source"
           - "certificates"
