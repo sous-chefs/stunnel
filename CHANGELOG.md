@@ -1,5 +1,12 @@
 # Change Log
 
+## [5.0.11](https://github.com/sous-chefs/stunnel/compare/5.0.10...v5.0.11) (2025-10-16)
+
+
+### Bug Fixes
+
+* **ci:** Update workflows to use release pipeline ([#112](https://github.com/sous-chefs/stunnel/issues/112)) ([41d016e](https://github.com/sous-chefs/stunnel/commit/41d016e276a435abcfa873432f9a2cfd50f0fcc8))
+
 ## 5.0.2 - *2023-05-16*
 
 * Fix metadata
