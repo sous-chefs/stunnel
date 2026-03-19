@@ -1,3 +1,7 @@
+apt_update
+
+# frozen_string_literal: true
+
 #
 # Cookbook:: test_stunnel
 # Recipe:: default

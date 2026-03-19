@@ -17,16 +17,16 @@ verifier:
   name: inspec
 
 platforms:
-  - name: amazon-linux
-  - name: amazon-linux-2
-  - name: centos-7
+  - name: almalinux-8
+  - name: almalinux-9
+  - name: amazonlinux-2023
+  - name: centos-stream-9
+  - name: debian-12
+  - name: fedora-latest
   - name: rockylinux-8
-  - name: debian-9
-  - name: debian-10
-  - name: debian-11
-  - name: ubuntu-18.04
-  - name: ubuntu-20.04
+  - name: rockylinux-9
   - name: ubuntu-22.04
+  - name: ubuntu-24.04
 
 suites:
   - name: default
@@ -57,4 +57,4 @@ suites:
       inspec_tests:
         - test/smoke/source
     attributes:
-      install_method: 'source'
+      install_method: "source"
