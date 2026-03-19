@@ -1,5 +1,21 @@
 # Change Log
 
+## [6.0.0](https://github.com/sous-chefs/stunnel/compare/v5.0.11...v6.0.0) (2026-03-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* modernize stunnel cookbook to custom resources
+
+### Features
+
+* modernize stunnel cookbook to custom resources ([8878071](https://github.com/sous-chefs/stunnel/commit/8878071b6fa8a890904314eb4aec1f2a50731a27))
+
+
+### Bug Fixes
+
+* **ci:** Update workflows to use release pipeline ([#112](https://github.com/sous-chefs/stunnel/issues/112)) ([41d016e](https://github.com/sous-chefs/stunnel/commit/41d016e276a435abcfa873432f9a2cfd50f0fcc8))
+
 ## [5.0.11](https://github.com/sous-chefs/stunnel/compare/5.0.10...v5.0.11) (2025-10-16)
 
 
