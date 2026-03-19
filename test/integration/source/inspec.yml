@@ -1,0 +1,12 @@
+---
+name: source
+title: Source Install Tests
+maintainer: Sous Chefs
+license: Apache-2.0
+summary: Verify stunnel compiled from source
+version: 1.0.0
+supports:
+  - platform-family: debian
+  - platform-family: rhel
+  - platform-family: fedora
+  - platform-family: amazon

@@ -1,0 +1,12 @@
+---
+name: certificates
+title: Certificate Tests
+maintainer: Sous Chefs
+license: Apache-2.0
+summary: Verify stunnel with TLS certificate configuration
+version: 1.0.0
+supports:
+  - platform-family: debian
+  - platform-family: rhel
+  - platform-family: fedora
+  - platform-family: amazon
