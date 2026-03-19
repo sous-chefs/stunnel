@@ -2,7 +2,9 @@
 
 apt_update
 
-stunnel_install 'default'
+stunnel_install 'default' do
+  install_method 'source'
+end
 
 stunnel_config 'default' do
   client_mode true

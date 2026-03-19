@@ -1,22 +1,6 @@
-#
-# Cookbook:: stunnel
-# Resources:: connection
-#
-# Copyright:: 2016-2018 DNSimple Corp
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
+# frozen_string_literal: true
 
+provides :stunnel_connection
 unified_mode true
 
 default_action :create
@@ -33,34 +17,48 @@ property :timeout_close, [true, false]
 property :client, [true, false]
 property :protocol, String
 property :options, Hash
+property :config_file, String, default: '/etc/stunnel/conf.d'
 
 action :create do
-  hsh = Mash.new(
-    connect: new_resource.connect,
-    accept: new_resource.accept,
-    cafile: new_resource.cafile,
-    cert: new_resource.cert,
-    key: new_resource.key,
-    verify: new_resource.verify,
-    verify_chain: new_resource.verify_chain,
-    timeout_close: new_resource.timeout_close,
-    client: new_resource.client,
-    protocol: new_resource.protocol,
-    options: new_resource.options
-  )
-  exist = Mash.new(node['stunnel']['services'][new_resource.service_name])
-  if exist != hsh
-    converge_by 'update_services' do
-      node.default['stunnel']['services'][new_resource.service_name] = hsh
-    end
+  directory new_resource.config_file do
+    owner 'root'
+    group 'root'
+    mode '0755'
+    recursive true
+  end
+
+  file ::File.join(new_resource.config_file, "#{new_resource.service_name}.conf") do
+    content render_service_config
+    owner 'root'
+    group 'root'
+    mode '0644'
   end
 end
 
 action :delete do
-  serv_data = Mash.new(node['stunnel']['services'])
-  if serv_data.delete(new_resource.service_name)
-    converge_by 'update_services' do
-      node.default['stunnel']['services'] = serv_data
+  file ::File.join(new_resource.config_file, "#{new_resource.service_name}.conf") do
+    action :delete
+  end
+end
+
+action_class do
+  def render_service_config
+    lines = ["[#{new_resource.service_name}]"]
+    lines << "connect = #{new_resource.connect}"
+    lines << "accept = #{new_resource.accept}"
+    lines << "key = #{new_resource.key}" if new_resource.key
+    lines << "cert = #{new_resource.cert}" if new_resource.cert
+    lines << "CAfile = #{new_resource.cafile}" if new_resource.cafile
+    lines << "verify = #{new_resource.verify}" if new_resource.verify
+    lines << "verifyChain = #{new_resource.verify_chain ? 'yes' : 'no'}" unless new_resource.verify_chain.nil?
+    lines << "TIMEOUTclose = #{new_resource.timeout_close ? 1 : 0}" unless new_resource.timeout_close.nil?
+    lines << "client = #{new_resource.client ? 'yes' : 'no'}" unless new_resource.client.nil?
+    lines << "protocol = #{new_resource.protocol}" if new_resource.protocol
+    if new_resource.options
+      new_resource.options.each do |k, v|
+        lines << "#{k} = #{v}"
+      end
     end
+    lines.join("\n") + "\n"
   end
 end
