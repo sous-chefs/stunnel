@@ -7,11 +7,8 @@ provisioner:
   product_name: chef
   product_version: <%= ENV['CHEF_VERSION'] || 'latest' %>
   install_strategy: once
-  # enforce_idempotency: true
   multiple_converge: 2
-
-client_rb:
-  treat_deprecation_warnings_as_errors: true
+  deprecations_as_errors: true
 
 verifier:
   name: inspec
@@ -34,27 +31,16 @@ suites:
       - recipe[test::default]
     verifier:
       inspec_tests:
-        - test/smoke/default
-  - name: ulimit
-    run_list:
-      - recipe[test::default]
-    verifier:
-      inspec_tests:
-        - test/smoke/ulimit
-    attributes:
-      stunnel:
-        ulimit: 8192
+        - path: test/integration/default
   - name: certificates
     run_list:
       - recipe[test::certificates]
     verifier:
       inspec_tests:
-        - test/smoke/certificates
+        - path: test/integration/certificates
   - name: source
     run_list:
-      - recipe[test::default]
+      - recipe[test::source]
     verifier:
       inspec_tests:
-        - test/smoke/source
-    attributes:
-      install_method: "source"
+        - path: test/integration/source
