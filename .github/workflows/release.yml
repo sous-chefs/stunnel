@@ -1,7 +1,5 @@
 ---
 name: release
-
-
 "on":
   push:
     branches: [main]
@@ -23,4 +21,3 @@ jobs:
       supermarket_key: ${{ secrets.CHEF_SUPERMARKET_KEY }}
       slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }}
       slack_channel_id: ${{ secrets.SLACK_CHANNEL_ID }}
-
