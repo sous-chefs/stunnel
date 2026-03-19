@@ -18,6 +18,7 @@ action :create do
 
       [Service]
       Type=forking
+      PIDFile=/tmp/stunnel.pid
       ExecStart=/usr/bin/stunnel #{new_resource.config_file}
       ExecStop=/bin/kill -TERM $MAINPID
       Restart=on-failure

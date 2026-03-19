@@ -42,6 +42,12 @@ action :create do
     end
   end
 
+  directory ::File.join(::File.dirname(new_resource.config_file), 'conf.d') do
+    owner 'root'
+    group 'root'
+    mode '0755'
+  end
+
   template new_resource.config_file do
     source 'stunnel.conf.erb'
     cookbook new_resource.cookbook

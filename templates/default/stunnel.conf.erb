@@ -53,6 +53,9 @@ fips = <%= @fips ? 'yes' : 'no' %>
 client = yes
 <% end -%>
 
+; include per-connection configuration files
+include = /etc/stunnel/conf.d
+
 ; service-level configuration
 <% @services.each do |name, opts| -%>
 

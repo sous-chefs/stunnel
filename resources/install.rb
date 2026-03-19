@@ -7,13 +7,15 @@ default_action :create
 
 property :install_method, String, default: 'package', equal_to: %w(package source)
 property :packages, Array, default: lazy { platform_family?('debian') ? %w(stunnel4) : %w(stunnel) }
-property :source_url, String, default: 'https://www.stunnel.org/archive/4.x/stunnel-4.56.tar.gz'
-property :source_checksum, String, default: '9cae2cfbe26d87443398ce50d7d5db54e5ea363889d5d2ec8d2778a01c871293'
+property :source_url, String, default: 'https://www.stunnel.org/archive/5.x/stunnel-5.72.tar.gz'
+property :source_checksum, String, default: '3d532941281ae353319735144e4adb9ae489a10b7e309c58a48157f08f42e949'
 property :ssl_devel_package, String, default: lazy { platform_family?('debian') ? 'libssl-dev' : 'openssl-devel' }
 
 action :create do
   if new_resource.install_method == 'source'
     build_essential 'stunnel'
+
+    package 'tar'
 
     package new_resource.ssl_devel_package
 

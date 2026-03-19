@@ -12,9 +12,11 @@ describe 'stunnel_config' do
     end
 
     it { is_expected.to create_directory('/etc/stunnel') }
+    it { is_expected.to create_directory('/etc/stunnel/conf.d') }
     it { is_expected.to create_template('/etc/stunnel/stunnel.conf') }
     it { is_expected.to render_file('/etc/stunnel/stunnel.conf').with_content(/client = yes/) }
     it { is_expected.to render_file('/etc/stunnel/stunnel.conf').with_content(/sslVersion = all/) }
+    it { is_expected.to render_file('/etc/stunnel/stunnel.conf').with_content(%r{include = /etc/stunnel/conf.d}) }
   end
 
   context 'create with custom properties' do
