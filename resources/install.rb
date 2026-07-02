@@ -17,11 +17,19 @@ action_class do
 
     platform_family?('debian') ? '/etc/ssl/certs/ca-certificates.crt' : '/etc/pki/tls/certs/ca-bundle.crt'
   end
+
+  def install_build_packages
+    if platform_family?('fedora')
+      package %w(autoconf bison flex gcc gcc-c++ gettext make m4 ncurses-devel patch)
+    else
+      build_essential 'stunnel'
+    end
+  end
 end
 
 action :create do
   if new_resource.install_method == 'source'
-    build_essential 'stunnel'
+    install_build_packages
 
     package 'ca-certificates'
 
