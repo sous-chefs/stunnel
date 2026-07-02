@@ -39,4 +39,17 @@ describe 'stunnel_install' do
     it { is_expected.to create_remote_file("#{Chef::Config[:file_cache_path]}/stunnel.tar.gz") }
     it { is_expected.to run_bash('compile_stunnel') }
   end
+
+  context 'source install on Fedora' do
+    platform 'fedora', '44'
+
+    recipe do
+      stunnel_install 'default' do
+        install_method 'source'
+      end
+    end
+
+    it { is_expected.to install_package('openssl-devel') }
+    it { is_expected.to create_remote_file("#{Chef::Config[:file_cache_path]}/stunnel.tar.gz") }
+  end
 end

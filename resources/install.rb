@@ -13,6 +13,8 @@ property :ssl_devel_package, String, default: lazy { platform_family?('debian') 
 
 action_class do
   def platform_ca_bundle
+    return '/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem' if platform_family?('fedora')
+
     platform_family?('debian') ? '/etc/ssl/certs/ca-certificates.crt' : '/etc/pki/tls/certs/ca-bundle.crt'
   end
 end
