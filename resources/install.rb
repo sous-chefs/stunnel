@@ -11,17 +11,28 @@ property :source_url, String, default: 'https://www.stunnel.org/archive/5.x/stun
 property :source_checksum, String, default: '3d532941281ae353319735144e4adb9ae489a10b7e309c58a48157f08f42e949'
 property :ssl_devel_package, String, default: lazy { platform_family?('debian') ? 'libssl-dev' : 'openssl-devel' }
 
+action_class do
+  def platform_ca_bundle
+    platform_family?('debian') ? '/etc/ssl/certs/ca-certificates.crt' : '/etc/pki/tls/certs/ca-bundle.crt'
+  end
+end
+
 action :create do
   if new_resource.install_method == 'source'
     build_essential 'stunnel'
+
+    package 'ca-certificates'
 
     package 'tar'
 
     package new_resource.ssl_devel_package
 
+    Chef::Config[:ssl_ca_file] = platform_ca_bundle
+
     remote_file "#{Chef::Config[:file_cache_path]}/stunnel.tar.gz" do
       source new_resource.source_url
       checksum new_resource.source_checksum
+      ssl_verify_mode :verify_peer
     end
 
     bash 'compile_stunnel' do
