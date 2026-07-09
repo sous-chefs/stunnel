@@ -1,5 +1,12 @@
 # Change Log
 
+## [6.0.1](https://github.com/sous-chefs/stunnel/compare/v6.0.0...v6.0.1) (2026-07-09)
+
+
+### Bug Fixes
+
+* migrate to Policyfile ([#125](https://github.com/sous-chefs/stunnel/issues/125)) ([83ce8ea](https://github.com/sous-chefs/stunnel/commit/83ce8ea1836f2a12e05e4214d527b69bec9882b6))
+
 ## [6.0.0](https://github.com/sous-chefs/stunnel/compare/v5.0.11...v6.0.0) (2026-03-19)
 
 
