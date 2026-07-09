@@ -35,12 +35,16 @@ suites:
   - name: certificates
     run_list:
       - recipe[test::certificates]
+    provisioner:
+      named_run_list: certificates
     verifier:
       inspec_tests:
         - path: test/integration/certificates
   - name: source
     run_list:
       - recipe[test::source]
+    provisioner:
+      named_run_list: source
     verifier:
       inspec_tests:
         - path: test/integration/source

@@ -25,4 +25,18 @@ describe 'stunnel_install' do
     it { is_expected.to install_package('stunnel') }
     it { is_expected.to create_user('stunnel4') }
   end
+
+  context 'source install' do
+    recipe do
+      stunnel_install 'default' do
+        install_method 'source'
+      end
+    end
+
+    it { is_expected.to install_package('ca-certificates') }
+    it { is_expected.to install_package('tar') }
+    it { is_expected.to install_package('libssl-dev') }
+    it { is_expected.to create_remote_file("#{Chef::Config[:file_cache_path]}/stunnel.tar.gz") }
+    it { is_expected.to run_bash('compile_stunnel') }
+  end
 end
